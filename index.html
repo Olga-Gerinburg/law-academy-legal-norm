@@ -1,0 +1,3005 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Академія правознавства — Норма права. Структура норми права</title>
+  <link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234f46e5'/%3E%3Cstop offset='100%25' stop-color='%230d9488'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='1' y='1' width='30' height='30' rx='7' fill='url(%23g)' stroke='%23fcd34d' stroke-width='2'/%3E%3Cg transform='translate(4,4)' fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v18M5 7h14M5 7l-3 7h6l-3-7zm14 0l-3 7h6l-3-7zM8 21h8'/%3E%3C/g%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            royal: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#4f46e5',
+              600: '#4338ca',
+              700: '#3730a3',
+              800: '#312e81',
+              900: '#1e1b4b',
+            },
+            academy: {
+              teal: '#0d9488',
+              gold: '#f59e0b',
+              coral: '#f43f5e',
+              emerald: '#10b981',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f7fb;
+      color: #1e1b4b;
+      overflow-x: hidden;
+    }
+
+    /* Геометричний 3D фон Академії */
+    .geo-bg {
+      background-image:
+        radial-gradient(circle at 12% 18%, rgba(79, 70, 229, 0.09) 0%, transparent 34%),
+        radial-gradient(circle at 88% 12%, rgba(13, 148, 136, 0.1) 0%, transparent 36%),
+        radial-gradient(circle at 82% 85%, rgba(245, 158, 11, 0.1) 0%, transparent 38%),
+        linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #f0fdfa 100%);
+    }
+
+    .geo-grid-pattern {
+      background-size: 36px 36px;
+      background-image: 
+        linear-gradient(to right, rgba(49, 46, 129, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(49, 46, 129, 0.045) 1px, transparent 1px);
+    }
+
+    /* 3D-перспектива та об'ємні картки */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+
+    .card-3d {
+      background: #ffffff;
+      border: 2px solid #e0e7ff;
+      box-shadow: 0 10px 0 #c7d2fe, 0 18px 30px -10px rgba(30, 27, 75, 0.14);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+    }
+
+    .card-3d-hover:hover {
+      transform: translateY(-4px) rotateX(1.5deg);
+      box-shadow: 0 14px 0 #a5b4fc, 0 24px 36px -10px rgba(30, 27, 75, 0.18);
+    }
+
+    /* 3D Кнопки зі зміщенням при натисканні та світловим відблиском */
+    .btn-3d {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
+      transform: translateY(0);
+    }
+    .btn-3d::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+      transform: skewX(-25deg);
+      transition: left 0.55s ease;
+    }
+    .btn-3d:hover::after {
+      left: 140%;
+    }
+    .btn-3d:active:not(:disabled) {
+      transform: translateY(4px);
+    }
+
+    .btn-3d-indigo {
+      background: linear-gradient(180deg, #4f46e5 0%, #3730a3 100%);
+      color: #ffffff;
+      box-shadow: 0 5px 0 #1e1b4b, 0 10px 20px rgba(55, 48, 163, 0.28);
+    }
+    .btn-3d-indigo:hover:not(:disabled) {
+      background: linear-gradient(180deg, #6366f1 0%, #4338ca 100%);
+    }
+    .btn-3d-indigo:active:not(:disabled) {
+      box-shadow: 0 1px 0 #1e1b4b;
+    }
+
+    .btn-3d-teal {
+      background: linear-gradient(180deg, #14b8a6 0%, #0f766e 100%);
+      color: #ffffff;
+      box-shadow: 0 5px 0 #115e59, 0 10px 20px rgba(13, 148, 136, 0.28);
+    }
+    .btn-3d-teal:active:not(:disabled) {
+      box-shadow: 0 1px 0 #115e59;
+    }
+
+    .btn-3d-gold {
+      background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%);
+      color: #1e1b4b;
+      box-shadow: 0 5px 0 #92400e, 0 10px 20px rgba(217, 119, 6, 0.28);
+    }
+    .btn-3d-gold:active:not(:disabled) {
+      box-shadow: 0 1px 0 #92400e;
+    }
+
+    .btn-3d-white {
+      background: #ffffff;
+      color: #1e1b4b;
+      border: 2px solid #cbd5e1;
+      box-shadow: 0 4px 0 #94a3b8;
+    }
+    .btn-3d-white:hover:not(:disabled) {
+      border-color: #6366f1;
+      background: #eef2ff;
+    }
+    .btn-3d-white:active:not(:disabled) {
+      box-shadow: 0 1px 0 #94a3b8;
+    }
+
+    /* Неоново-золотий маркер рентгену норми (Завдання 9) */
+    .xray-highlight {
+      background: linear-gradient(120deg, #fef08a 0%, #fde047 100%);
+      color: #1e1b4b;
+      padding: 2px 6px;
+      border-radius: 6px;
+      border-bottom: 3px solid #eab308;
+      box-shadow: 0 0 16px rgba(250, 204, 21, 0.55);
+      font-weight: 700;
+    }
+
+    /* 3D плаваючі геометричні фігури */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(4deg); }
+    }
+    @keyframes floatReverse {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(10px) rotate(-4deg); }
+    }
+    .animate-float-slow {
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+    .animate-float-reverse {
+      animation: floatReverse 7s ease-in-out infinite;
+    }
+
+    /* Анімація штампу печатки */
+    @keyframes stampSlam {
+      0% { transform: scale(2.4) rotate(-18deg); opacity: 0; }
+      65% { transform: scale(0.92) rotate(-6deg); opacity: 1; }
+      100% { transform: scale(1) rotate(-8deg); opacity: 1; }
+    }
+    .stamp-anim {
+      animation: stampSlam 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Анімація появи нагороди */
+    @keyframes popIn3D {
+      0% { transform: scale(0.6) translateY(25px); opacity: 0; }
+      70% { transform: scale(1.04) translateY(-4px); opacity: 1; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .pop-in-3d {
+      animation: popIn3D 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+  </style>
+</head>
+<body class="geo-bg geo-grid-pattern min-h-screen flex flex-col">
+
+  <!-- Декоративні 3D геометричні фігури на фоні -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+    <!-- 3D Кристал знань (зліва вгорі) -->
+    <svg class="absolute top-20 left-4 w-24 h-24 opacity-25 animate-float-slow hidden md:block" viewBox="0 0 100 100">
+      <polygon points="50,5 90,35 50,95 10,35" fill="#4f46e5" />
+      <polygon points="50,5 90,35 50,50" fill="#818cf8" />
+      <polygon points="50,5 10,35 50,50" fill="#312e81" />
+      <polygon points="50,50 90,35 50,95" fill="#0d9488" />
+    </svg>
+    <!-- 3D Піраміда (справа внизу) -->
+    <svg class="absolute bottom-12 right-6 w-28 h-28 opacity-25 animate-float-reverse hidden md:block" viewBox="0 0 100 100">
+      <polygon points="50,10 92,80 50,92" fill="#f59e0b" />
+      <polygon points="50,10 8,80 50,92" fill="#d97706" />
+      <polygon points="50,10 68,84 50,92" fill="#fef3c7" opacity="0.5" />
+    </svg>
+    <!-- 3D Призма (справа вгорі) -->
+    <svg class="absolute top-28 right-12 w-20 h-20 opacity-20 animate-float-slow hidden lg:block" viewBox="0 0 100 100">
+      <polygon points="25,15 75,15 90,50 75,85 25,85 10,50" fill="#14b8a6" />
+      <polygon points="25,15 75,15 50,50" fill="#99f6e4" />
+    </svg>
+    <!-- 3D Колона Академії (зліва внизу) -->
+    <svg class="absolute bottom-14 left-8 w-20 h-28 opacity-20 animate-float-reverse hidden lg:block" viewBox="0 0 100 140">
+      <rect x="20" y="10" width="60" height="12" rx="4" fill="#312e81" />
+      <rect x="28" y="22" width="44" height="96" fill="#6366f1" />
+      <line x1="38" y1="26" x2="38" y2="114" stroke="#e0e7ff" stroke-width="3" />
+      <line x1="50" y1="26" x2="50" y2="114" stroke="#e0e7ff" stroke-width="3" />
+      <line x1="62" y1="26" x2="62" y2="114" stroke="#e0e7ff" stroke-width="3" />
+      <rect x="18" y="118" width="64" height="14" rx="4" fill="#312e81" />
+    </svg>
+  </div>
+
+  <!-- ВЕРХНЯ ПАНЕЛЬ (HUD АКАДЕМІЇ) -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-indigo-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
+      <!-- Логотип та назва -->
+      <div class="flex items-center gap-2.5 cursor-pointer" onclick="goHome()">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-teal-600 flex items-center justify-center text-white shadow-md border-2 border-amber-300">
+          <!-- 3D SVG Терези Феміди -->
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3v18M5 7h14M5 7l-3 7h6l-3-7zm14 0l-3 7h6l-3-7zM8 21h8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-lg font-extrabold tracking-tight text-indigo-950 leading-tight">
+            АКАДЕМІЯ ПРАВОЗНАВСТВА
+          </h1>
+          <p class="text-[11px] sm:text-xs font-medium text-teal-700">10 клас • Норма права. Структура норми права</p>
+        </div>
+      </div>
+
+      <!-- Поточне звання, бали, стрік, кнопки -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+        <!-- Поточне Звання -->
+        <div id="hud-rank-badge" class="hidden sm:flex items-center gap-2 bg-indigo-50 border border-indigo-200 px-3 py-1.5 rounded-xl">
+          <span class="text-base" id="hud-rank-icon">🎓</span>
+          <div>
+            <div class="text-[10px] uppercase tracking-wider font-bold text-indigo-500">Звання</div>
+            <div class="text-xs font-extrabold text-indigo-950" id="hud-rank-title">Слухач Академії</div>
+          </div>
+        </div>
+
+        <!-- Успішність та Бали -->
+        <div class="flex items-center gap-2 bg-amber-50 border border-amber-200 px-2.5 sm:px-3 py-1.5 rounded-xl">
+          <span class="text-base">⚖️</span>
+          <div>
+            <div class="text-[10px] uppercase tracking-wider font-bold text-amber-700">Успішність</div>
+            <div class="text-xs sm:text-sm font-extrabold text-amber-950">
+              <span id="hud-score">0</span>/<span id="hud-total">0</span> (<span id="hud-percent">0%</span>)
+            </div>
+          </div>
+        </div>
+
+        <!-- Серія (Стрік) -->
+        <div class="flex items-center gap-1.5 bg-rose-50 border border-rose-200 px-2.5 py-1.5 rounded-xl" title="Серія правильних відповідей поспіль">
+          <span class="text-base">🔥</span>
+          <span class="text-xs sm:text-sm font-extrabold text-rose-700" id="hud-streak">0</span>
+        </div>
+
+        <!-- Кнопка Карта Академії -->
+        <button onclick="openMapModal()" class="btn-3d btn-3d-white px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5">
+          <span>🗺️</span>
+          <span class="hidden md:inline">Карта блоків</span>
+        </button>
+
+        <!-- Кнопка Зала Слави / Відзнаки -->
+        <button onclick="openTrophyModal()" class="btn-3d btn-3d-gold px-3 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5">
+          <span>🏆</span>
+          <span>Відзнаки (<span id="hud-awards-count">0</span>)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Прогрес-бар проходження Академії -->
+    <div class="w-full h-1.5 bg-indigo-100">
+      <div id="global-progress-bar" class="h-full bg-gradient-to-r from-indigo-600 via-teal-500 to-amber-500 transition-all duration-500" style="width: 0%"></div>
+    </div>
+  </header>
+
+  <!-- ОСНОВНИЙ ІГРОВИЙ КОНТЕЙНЕР -->
+  <main id="app-container" class="relative z-10 flex-1 max-w-5xl w-full mx-auto px-3 sm:px-6 py-5 sm:py-8">
+    <!-- Динамічний контент екранів -->
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="relative z-10 mt-auto border-t-2 border-indigo-100 bg-white/85 backdrop-blur-md py-4 px-3 text-center">
+    <p class="text-xs sm:text-sm font-semibold text-indigo-950/75">
+      Створено Ольгою Герінбург + Gemini
+    </p>
+  </footer>
+
+  <!-- СПЛИВАЮЧЕ 3D-СПОВІЩЕННЯ ПРО НОВУ ВІДЗНАКУ (TOAST) -->
+  <div id="award-toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none px-3 sm:px-0"></div>
+
+  <!-- МОДАЛЬНЕ ВІКНО: ЗАЛА СЛАВИ (3 ТИПИ ВІДЗНАК) -->
+  <div id="trophy-modal" class="fixed inset-0 z-50 bg-indigo-950/60 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="card-3d rounded-3xl max-w-4xl w-full p-5 sm:p-8 max-h-[90vh] overflow-y-auto relative">
+      <div class="flex items-center justify-between border-b-2 border-indigo-100 pb-4 mb-6">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-2xl shadow-md">🏆</div>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-black text-indigo-950">Зала Слави Академії</h2>
+            <p class="text-xs sm:text-sm text-slate-600">Три рівні академічних відзнак: Звання, Значки досягнень та Гербові печатки Феміди</p>
+          </div>
+        </div>
+        <button onclick="closeTrophyModal()" class="btn-3d btn-3d-white w-10 h-10 rounded-xl font-black text-lg flex items-center justify-center">✕</button>
+      </div>
+
+      <!-- 1. ЗВАННЯ -->
+      <div class="mb-7">
+        <h3 class="text-sm font-extrabold uppercase tracking-wider text-indigo-600 mb-3 flex items-center gap-2">
+          <span>🎓</span> 1. Академічні звання (за проходження блоків)
+        </h3>
+        <div id="modal-ranks-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      </div>
+
+      <!-- 2. ЗНАЧКИ -->
+      <div class="mb-7">
+        <h3 class="text-sm font-extrabold uppercase tracking-wider text-teal-600 mb-3 flex items-center gap-2">
+          <span>⚡</span> 2. Значки майстерності (за особливі досягнення)
+        </h3>
+        <div id="modal-badges-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      </div>
+
+      <!-- 3. ГЕРБОВІ ПЕЧАТКИ ФЕМІДИ -->
+      <div>
+        <h3 class="text-sm font-extrabold uppercase tracking-wider text-amber-600 mb-3 flex items-center gap-2">
+          <span>🛡️</span> 3. Гербові печатки Феміди (ордени точності)
+        </h3>
+        <div id="modal-crests-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНЕ ВІКНО: КАРТА АКАДЕМІЇ -->
+  <div id="map-modal" class="fixed inset-0 z-50 bg-indigo-950/60 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="card-3d rounded-3xl max-w-3xl w-full p-5 sm:p-8 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b-2 border-indigo-100 pb-4 mb-5">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-indigo-950">Навігаційна карта Академії</h2>
+          <p class="text-xs sm:text-sm text-slate-600">Оберіть навчальний блок або конкретне завдання</p>
+        </div>
+        <button onclick="closeMapModal()" class="btn-3d btn-3d-white w-10 h-10 rounded-xl font-black text-lg flex items-center justify-center">✕</button>
+      </div>
+      <div id="modal-map-list" class="space-y-4"></div>
+    </div>
+  </div>
+
+  <!-- ЗВУКОВИЙ СИНТЕЗАТОР (Web Audio API без зовнішніх URL) -->
+  <script>
+    const SoundFX = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+      },
+      play(type) {
+        try {
+          this.init();
+          if (!this.ctx) return;
+          if (this.ctx.state === 'suspended') this.ctx.resume();
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          if (type === 'click') {
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(520, now);
+            osc.frequency.exponentialRampToValueAtTime(680, now + 0.06);
+            gain.gain.setValueAtTime(0.08, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+            osc.start(now);
+            osc.stop(now + 0.06);
+          } else if (type === 'correct') {
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(523.25, now);
+            osc.frequency.setValueAtTime(659.25, now + 0.08);
+            osc.frequency.setValueAtTime(783.99, now + 0.16);
+            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+            osc.start(now);
+            osc.stop(now + 0.35);
+          } else if (type === 'wrong') {
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(220, now);
+            osc.frequency.linearRampToValueAtTime(160, now + 0.22);
+            gain.gain.setValueAtTime(0.09, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
+            osc.start(now);
+            osc.stop(now + 0.24);
+          } else if (type === 'award') {
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(440, now);
+            osc.frequency.setValueAtTime(554.37, now + 0.09);
+            osc.frequency.setValueAtTime(659.25, now + 0.18);
+            osc.frequency.setValueAtTime(880, now + 0.27);
+            gain.gain.setValueAtTime(0.14, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+            osc.start(now);
+            osc.stop(now + 0.55);
+          }
+        } catch (e) {
+          // Ігноруємо помилки аудіо в обмежених середовищах
+        }
+      }
+    };
+  </script>
+
+  <!-- ПОВНА БАЗА ДАНИХ ГРИ (УСІ ТЕКСТИ СЛОВО В СЛОВО БЕЗ СКОРОЧЕНЬ) -->
+  <script>
+    const RANKS_DATA = [
+      { id: 'rank_1', block: 1, title: 'Новачок у правознавстві', icon: '🌱', desc: 'Присвоюється за завершення Блоку 1 «Система права»' },
+      { id: 'rank_2', block: 2, title: 'Знавець юридичних понять', icon: '📜', desc: 'Присвоюється за завершення Блоку 2 «Джерела права»' },
+      { id: 'rank_3', block: 3, title: 'Аналітик права', icon: '🔍', desc: 'Присвоюється за завершення Блоку 3 «Види норм права»' },
+      { id: 'rank_4', block: 4, title: 'Дослідник правових конструкцій', icon: '🏛️', desc: 'Присвоюється за завершення Блоку 4 «Структура норми права»' },
+      { id: 'rank_5', block: 5, title: 'Експерт із теорії права', icon: '⚖️', desc: 'Присвоюється за завершення Блоку 5 «Підсумковий»' },
+      { id: 'rank_master', block: 6, title: 'Майстер правознавства', icon: '👑', desc: 'Почесне фінальне звання: успішність виконання завдань не менше 75%' }
+    ];
+
+    const BADGES_DATA = [
+      { id: 'badge_streak3', title: 'Бездоганна серія', icon: '🔥', desc: '3 правильні відповіді поспіль без помилок' },
+      { id: 'badge_streak7', title: 'Нестримний інтелект', icon: '⚡', desc: '7 правильних відповідей поспіль без помилок' },
+      { id: 'badge_sprinter', title: 'Юридичний спринтер', icon: '⏱️', desc: 'Швидка та правильна відповідь менш ніж за 12 секунд' },
+      { id: 'badge_deduction', title: 'Майстер дедукції', icon: '🧠', desc: 'Проходження Блоку 3 без жодної помилки' },
+      { id: 'badge_architect', title: 'Архітектор норм', icon: '📐', desc: '100% точність у Блоці 4 — структура норми права' },
+      { id: 'badge_supreme', title: 'Верховний суддя', icon: '👨‍⚖️', desc: 'Успішний фінальний комплексний розбір усіх 3 норм у Блоці 5' }
+    ];
+
+    const CRESTS_DATA = [
+      { id: 'crest_bronze', title: 'Бронзова печатка Феміди', icon: '🥉', threshold: 50, desc: 'Загальна точність відповідей від 50% (мінімум 10 відповідей)' },
+      { id: 'crest_silver', title: 'Срібна печатка Феміди', icon: '🥈', threshold: 75, desc: 'Загальна точність відповідей від 75% (мінімум 15 відповідей)' },
+      { id: 'crest_gold', title: 'Золота печатка Феміди', icon: '🥇', threshold: 90, desc: 'Загальна точність відповідей від 90% (мінімум 20 відповідей)' }
+    ];
+
+    const GAME_BLOCKS = [
+      {
+        id: 1,
+        title: 'БЛОК 1. СИСТЕМА ПРАВА',
+        subtitle: 'Поняття системи права, ієрархія елементів та поділ на публічне й приватне право',
+        rankId: 'rank_1',
+        color: 'indigo',
+        tasks: [
+          {
+            id: 't1',
+            type: 'connect_lines',
+            title: 'Завдання 1. Встанови відповідність',
+            instruction: 'З’єднай поняття з визначенням. Натисни спочатку на поняття ліворуч, а потім на відповідне визначення праворуч.',
+            pairs: [
+              {
+                id: 'p1',
+                left: 'Норма права',
+                right: 'Загальнообов’язкове, формально визначене правило поведінки, встановлене або санкціоноване державою та забезпечене її примусовою силою.'
+              },
+              {
+                id: 'p2',
+                left: 'Інститут права',
+                right: 'Відносно відокремлена сукупність правових норм, що регулюють певну групу однорідних суспільних відносин.'
+              },
+              {
+                id: 'p3',
+                left: 'Галузь права',
+                right: 'Сукупність правових норм, що регулюють певну сферу однорідних суспільних відносин специфічним методом.'
+              },
+              {
+                id: 'p4',
+                left: 'Система права',
+                right: 'Внутрішня узгоджена будова права, що охоплює норми, інститути та галузі права.'
+              }
+            ]
+          },
+          {
+            id: 't2',
+            type: 'pyramid_order',
+            title: 'Завдання 2. Розташуй елементи системи права',
+            instruction: 'Постав від найменшої складової до найбільшої: галузь права; норма права; система права; інститут права.',
+            items: ['галузь права', 'норма права', 'система права', 'інститут права'],
+            correctOrder: ['НОРМА ПРАВА', 'ІНСТИТУТ ПРАВА', 'ГАЛУЗЬ ПРАВА', 'СИСТЕМА ПРАВА'],
+            explanation: 'Пояснення: норми об’єднуються в інститути; інститути — у галузі; галузі утворюють систему права.'
+          },
+          {
+            id: 't3',
+            type: 'two_step_flip',
+            title: 'Завдання 3. Визнач галузь права, а потім — публічне чи приватне право',
+            instruction: 'Для кожної картки виконай два послідовні кроки. Крок 1: обери галузь. Крок 2: класифікуй галузь як публічне або приватне право.',
+            cards: [
+              {
+                label: 'Картка 1.',
+                normText: '«Власникові належать права володіння, користування та розпоряджання своїм майном».',
+                step1: {
+                  question: 'Крок 1. Запитання: До якої галузі права належить наведена норма?',
+                  options: ['А) цивільне право', 'Б) право власності', 'В) трудове право', 'Г) цивільно-процесуальне право'],
+                  correctIndex: 0,
+                  explanation: 'Джерело норми: Цивільний кодекс України, ст. 317 ч. 1'
+                },
+                step2: {
+                  question: 'Крок 2. Запитання: До якої частини системи права належить ця галузь?',
+                  options: ['А) публічне право', 'Б) приватне право'],
+                  correctIndex: 1,
+                  explanation: 'Норма регулює майнові відносини між юридично рівними учасниками; власник реалізує свої правомочності щодо майна.'
+                }
+              },
+              {
+                label: 'Картка 2.',
+                normText: '«Таємне викрадення чужого майна (крадіжка) -\nкарається штрафом … або громадськими роботами …, або виправними роботами …, або пробаційним наглядом …, або обмеженням волі …».',
+                step1: {
+                  question: 'Крок 1. Запитання: До якої галузі права належить наведена норма?',
+                  options: ['А) цивільне право', 'Б) кримінальне право', 'В) трудове право', 'Г) кримінальне процесуальне право'],
+                  correctIndex: 1,
+                  explanation: 'Джерело норми: Кримінальний кодекс України, ст. 185 ч. 1'
+                },
+                step2: {
+                  question: 'Крок 2. Запитання: До якої частини системи права належить ця галузь?',
+                  options: ['А) публічне право', 'Б) приватне право'],
+                  correctIndex: 0,
+                  explanation: 'Норма встановлює кримінальну протиправність діяння та державну реакцію на нього.'
+                }
+              },
+              {
+                label: 'Картка 3.',
+                normText: '«Працівники зобов\'язані працювати чесно і сумлінно, своєчасно і точно виконувати розпорядження роботодавця, додержувати трудової і технологічної дисципліни, вимог нормативних актів про охорону праці, дбайливо ставитися до майна роботодавця, з яким укладено трудовий договір»',
+                step1: {
+                  question: 'Крок 1. Запитання: До якої галузі права належить наведена норма?',
+                  options: ['А) цивільне право', 'Б) конституційне право', 'В) трудове право', 'Г) адміністративне право'],
+                  correctIndex: 2,
+                  explanation: 'Джерело норми: Кодекс законів про працю України, ст. 139.'
+                },
+                step2: {
+                  question: 'Крок 2. Запитання: До якої частини системи права належить ця галузь?',
+                  options: ['А) публічне право', 'Б) приватне право'],
+                  correctIndex: 1,
+                  explanation: 'Трудове право належить до приватного права, хоча поєднує приватноправові договірні засади й імперативне державне регулювання.'
+                }
+              },
+              {
+                label: 'Картка 4.',
+                normText: '«Слідчий, дізнавач або прокурор невідкладно, але не пізніше 24 годин після подання заяви чи повідомлення про кримінальне правопорушення, вносить відповідні відомості до ЄРДР та розпочинає розслідування».',
+                step1: {
+                  question: 'Крок 1. Запитання: До якої галузі права належить наведена норма?',
+                  options: ['А) цивільне право', 'Б) кримінальне право', 'В) адміністративне право', 'Г) кримінальне процесуальне'],
+                  correctIndex: 3,
+                  explanation: 'Джерело норми: Кримінальний процесуальний кодекс України, ст. 214 ч. 1 (скорочений фрагмент):'
+                },
+                step2: {
+                  question: 'Крок 2. Запитання: До якої частини системи права належить ця галузь?',
+                  options: ['А) публічне право', 'Б) приватне право'],
+                  correctIndex: 0,
+                  explanation: 'Норма визначає обов’язкові процесуальні дії уповноважених державних органів під час кримінального провадження.'
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: 'БЛОК 2. ДЖЕРЕЛА ПРАВА',
+        subtitle: 'Форми зовнішнього виразу та закріплення правових норм',
+        rankId: 'rank_2',
+        color: 'teal',
+        tasks: [
+          {
+            id: 't4',
+            type: 'connect_lines',
+            badgeLabel: 'МЕХАНІКА: ЛІНІЇ З\'ЄДНАННЯ ДЖЕРЕЛ ПРАВА',
+            nextBtnLabel: 'Перейти до Завдання 5 ➡️',
+            title: 'Завдання 4. Встанови відповідність',
+            instruction: 'З’єднай джерело права з визначенням за допомогою ліній. Натисни спочатку на джерело ліворуч, а потім на відповідне визначення праворуч.',
+            pairs: [
+              {
+                id: 'dp1',
+                left: 'Правовий звичай',
+                right: 'Правило поведінки, що склалося внаслідок тривалого й повторюваного застосування та визнається державою як юридично значуще.'
+              },
+              {
+                id: 'dp2',
+                left: 'Правовий прецедент',
+                right: 'Рішення суду або іншого уповноваженого органу в конкретній справі, правова позиція якого використовується для вирішення подібних справ.'
+              },
+              {
+                id: 'dp3',
+                left: 'Нормативно-правовий акт',
+                right: 'Офіційний письмовий документ компетентного органу, який містить загальнообов’язкові норми права.'
+              },
+              {
+                id: 'dp4',
+                left: 'Міжнародний договір',
+                right: 'Угода між державами або іншими суб’єктами міжнародного права, що регулюється міжнародним правом.'
+              }
+            ]
+          },
+          {
+            id: 't5',
+            type: 'stamp_scanner',
+            title: 'Завдання 5. Визнач джерело права за фрагментом',
+            instruction: 'Проаналізуй кожен наведений фрагмент та постав печатку відповідного джерела права.',
+            cases: [
+              {
+                num: 1,
+                text: 'Цивільний кодекс України, ст. 7 ч. 1: «Цивільні відносини можуть регулюватися звичаєм, зокрема звичаєм ділового обороту. Звичаєм є правило поведінки, яке не встановлене актами цивільного законодавства, але є усталеним у певній сфері цивільних відносин. Звичай може бути зафіксований у відповідному документі».',
+                question: 'Запитання: Яке джерело права представлено?',
+                options: ['А) правовий звичай', 'Б) правовий прецедент', 'В) нормативно-правовий акт', 'Г) міжнародний договір'],
+                correctIndex: 0,
+                explanation: 'Пояснення: Кодекс прямо визнає усталене правило поведінки можливим регулятором цивільних відносин.'
+              },
+              {
+                num: 2,
+                text: 'Конституція України, ст. 8: «Конституція має найвищу юридичну силу; закони та інші нормативно-правові акти приймаються на її основі й повинні відповідати їй».',
+                question: 'Запитання: Яке джерело права представлено?',
+                options: ['А) правовий звичай', 'Б) правовий прецедент', 'В) нормативно-правовий акт', 'Г) міжнародний договір'],
+                correctIndex: 2,
+                explanation: 'Пояснення: Конституція є письмовим офіційним актом із нормами права та найвищою юридичною силою.'
+              },
+              {
+                num: 3,
+                text: 'Конвенція про захист прав людини і основоположних свобод, ст. 8 ч. 1: «Кожен має право на повагу до свого приватного і сімейного життя, до свого житла і кореспонденції».',
+                question: 'Запитання: Яке джерело права представлено?',
+                options: ['А) правовий звичай', 'Б) правовий прецедент', 'В) нормативно-правовий акт', 'Г) міжнародний договір'],
+                correctIndex: 3,
+                explanation: 'Пояснення: Конвенція є міжнародною угодою, учасницею якої є Україна.'
+              },
+              {
+                num: 4,
+                text: 'ЄСПЛ, справа «Гендісайд проти Сполученого Королівства» (від 7 грудня 1976 року): «Свобода вираження поглядів становить одну з головних підвалин демократичного суспільства, одну з основних умов його прогресу та самореалізації кожного. Відповідно до пункту 2 статті 10, вона стосується не лише тієї "інформації" чи тих "ідей", які сприймаються схвально або вважаються необразливими чи нейтральними, але й тих, які ображають, шокують або викликають занепокоєння держави чи будь-якої частини населення. Такими є вимоги плюралізму, толерантності та широти поглядів, без яких немає "демократичного суспільства"».',
+                question: 'Запитання: Яке джерело права представлено?',
+                options: ['А) правовий звичай', 'Б) правовий прецедент', 'В) нормативно-правовий акт', 'Г) міжнародний договір'],
+                correctIndex: 1,
+                explanation: 'Пояснення: Це приклад правової позиції міжнародного суду, а не текст нормативно-правового акта. Ця справа є базовою («класичною») у практиці ЄСПЛ, оскільки в ній вперше були сформульовані ключові стандарти щодо свободи вираження поглядів і меж допустимих обмежень, на які посилається ЄСПЛ, а також Верховний Суд України.'
+              },
+              {
+                num: 5,
+                text: 'Кодекс законів про працю України, ст. 139: «Працівники зобов\'язані працювати чесно і сумлінно, своєчасно і точно виконувати розпорядження роботодавця, додержувати трудової і технологічної дисципліни, вимог нормативних актів про охорону праці, дбайливо ставитися до майна роботодавця, з яким укладено трудовий договір».',
+                question: 'Запитання: Яке джерело права представлено?',
+                options: ['А) правовий звичай', 'Б) правовий прецедент', 'В) нормативно-правовий акт', 'Г) міжнародний договір'],
+                correctIndex: 2,
+                explanation: 'Пояснення: Кодекс — офіційний письмовий акт, що містить загальнообов’язкові норми.'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: 'БЛОК 3. ВИДИ НОРМ ПРАВА',
+        subtitle: 'Класифікація правових норм за п’ятьма критеріями та комплексний аналіз',
+        rankId: 'rank_3',
+        color: 'purple',
+        tasks: [
+          {
+            id: 't6',
+            type: 'classification_lab',
+            title: 'Завдання 6. Класифікації норм права',
+            instruction: 'Пройди послідовно 5 критеріїв класифікації (А, Б, В, Г, Д): спочатку з’єднай види норм із визначеннями, а потім класифікуй приклади норм.',
+            subblocks: [
+              {
+                code: 'А',
+                name: 'А. За ступенем узагальнення змісту',
+                step1Pairs: [
+                  { id: 'a1', left: 'Загальні норми', right: 'Встановлюють загальні положення, що поширюються на певне коло відносин або суб’єктів.' },
+                  { id: 'a2', left: 'Норми-принципи', right: 'Закріплюють основоположні ідеї та засади правового регулювання.' },
+                  { id: 'a3', left: 'Конкретні норми', right: 'Містять конкретне правило поведінки для визначених правовідносин.' }
+                ],
+                step2Items: [
+                  {
+                    text: 'Конституція України, ст. 3: «людина, її життя і здоров’я, честь і гідність, недоторканність і безпека визнаються найвищою соціальною цінністю».',
+                    options: ['Загальні норми', 'Норми-принципи', 'Конкретні норми'],
+                    correctIndex: 1,
+                    explanation: 'Норма-принципи. Пояснення: Закріплює фундаментальну засаду правового регулювання.'
+                  },
+                  {
+                    text: 'ЦКУ, ст. 317 ч. 1: «власникові належать права володіння, користування та розпоряджання майном».',
+                    options: ['Загальні норми', 'Норми-принципи', 'Конкретні норми'],
+                    correctIndex: 2,
+                    explanation: 'Конкретна норма. Пояснення: Визначає конкретний набір правомочностей власника.'
+                  },
+                  {
+                    text: 'КЗпП, ст. 139: «працівники зобов’язані сумлінно працювати й додержувати трудової дисципліни».',
+                    options: ['Загальні норми', 'Норми-принципи', 'Конкретні норми'],
+                    correctIndex: 0,
+                    explanation: 'Загальна норма. Пояснення: Містить загальні правила, які конкретизуються в інших нормах.'
+                  }
+                ]
+              },
+              {
+                code: 'Б',
+                name: 'Б. За характером правовідносин',
+                step1Pairs: [
+                  { id: 'b1', left: 'Матеріальні норми', right: 'Визначають права, обов’язки, заборони та зміст правовідносин.' },
+                  { id: 'b2', left: 'Процесуальні норми', right: 'Визначають порядок, процедуру реалізації та захисту матеріальних норм.' }
+                ],
+                step2Items: [
+                  {
+                    text: 'ЦКУ, ст. 317 ч. 1: «власникові належать права володіння, користування та розпоряджання майном».',
+                    options: ['Матеріальні норми', 'Процесуальні норми'],
+                    correctIndex: 0,
+                    explanation: 'Матеріальна. Пояснення: Визначає зміст суб’єктивного права власності.'
+                  },
+                  {
+                    text: 'КПК, ст. 214 ч. 1: «Слідчий, дізнавач, прокурор невідкладно, але не пізніше 24 годин після подання заяви… зобов’язаний внести відповідні відомості до ЄРДР». Виділений фрагмент: «зобов’язаний внести відповідні відомості до ЄРДР».',
+                    options: ['Матеріальні норми', 'Процесуальні норми'],
+                    correctIndex: 1,
+                    explanation: 'Процесуальна. Пояснення: Встановлює процесуальний порядок початку досудового розслідування.'
+                  }
+                ]
+              },
+              {
+                code: 'В',
+                name: 'В. За способом установлення правил поведінки',
+                step1Pairs: [
+                  { id: 'v1', left: 'Імперативні', right: 'Містять категоричний припис, від якого учасники не можуть відступити за власною домовленістю.' },
+                  { id: 'v2', left: 'Диспозитивні', right: 'Надають учасникам можливість самостійно визначити поведінку в межах, установлених законом.' }
+                ],
+                step2Items: [
+                  {
+                    text: 'КЗпП, ст. 139: «працівник зобов’язаний додержувати трудової дисципліни».',
+                    options: ['Імперативні', 'Диспозитивні'],
+                    correctIndex: 0,
+                    explanation: 'Імперативна. Пояснення: Обов’язок установлено категорично; сторони не можуть домовитися про його скасування.'
+                  },
+                  {
+                    text: 'ЦКУ, ст. 627 ч. 1: «сторони є вільними в укладенні договору, виборі контрагента та визначенні умов договору з урахуванням вимог закону».',
+                    options: ['Імперативні', 'Диспозитивні'],
+                    correctIndex: 1,
+                    explanation: 'Диспозитивна. Пояснення: Норма закріплює свободу договору та простір для погодження умов.'
+                  }
+                ]
+              },
+              {
+                code: 'Г',
+                name: 'Г. За залежністю від повноти викладу норми в статті',
+                step1Pairs: [
+                  { id: 'g1', left: 'Прямий спосіб', right: 'У статті безпосередньо викладено правило поведінки та необхідні елементи для його розуміння.' },
+                  { id: 'g2', left: 'Відсильний спосіб', right: 'Стаття прямо відсилає до іншої конкретної статті, частини або пункту нормативного акта.' },
+                  { id: 'g3', left: 'Бланкетний спосіб', right: 'Стаття відсилає до правил, вимог або норм, установлених іншими актами чи спеціальними правилами, без вичерпного їх відтворення.' }
+                ],
+                step2Items: [
+                  {
+                    text: 'ККУ, ст. 185 ч. 1: Таємне викрадення чужого майна (крадіжка) карається штрафом … або громадськими роботами …, або виправними роботами …, або пробаційним наглядом …, або обмеженням волі ….',
+                    options: ['Прямий спосіб', 'Відсильний спосіб', 'Бланкетний спосіб'],
+                    correctIndex: 0,
+                    explanation: 'Прямий. Пояснення: У фрагменті безпосередньо описано заборонене діяння. Це описовий зміст диспозиції.'
+                  },
+                  {
+                    text: 'ККУ, ст. 286 ч. 1: Порушення правил безпеки дорожнього руху або експлуатації транспорту особою, яка керує транспортним засобом, що спричинило потерпілому середньої тяжкості тілесне ушкодження, - карається штрафом … або виправними роботами …, або арештом …, або обмеженням волі .., з позбавленням права керувати транспортними засобами ….',
+                    options: ['Прямий спосіб', 'Відсильний спосіб', 'Бланкетний спосіб'],
+                    correctIndex: 2,
+                    explanation: 'Бланкетний. Пояснення: Щоб установити конкретне порушене правило, необхідно звернутися до правил дорожнього руху та інших нормативних вимог.'
+                  }
+                ]
+              },
+              {
+                code: 'Д',
+                name: 'Д. За формою виразу припису',
+                step1Pairs: [
+                  { id: 'd1', left: 'Зобов’язуючі', right: 'Вимагають учинити певні позитивні дії.' },
+                  { id: 'd2', left: 'Забороняючі', right: 'Вимагають утриматися від певної поведінки.' },
+                  { id: 'd3', left: 'Уповноважуючі', right: 'Надають суб’єкту можливість діяти певним чином.' }
+                ],
+                step2Items: [
+                  {
+                    text: 'КЗпП, ст. 139: «Працівники зобов\'язані працювати чесно і сумлінно, своєчасно і точно виконувати розпорядження роботодавця, додержувати трудової і технологічної дисципліни, вимог нормативних актів про охорону праці, дбайливо ставитися до майна роботодавця, з яким укладено трудовий договір».',
+                    options: ['Зобов’язуючі', 'Забороняючі', 'Уповноважуючі'],
+                    correctIndex: 0,
+                    explanation: 'Зобов’язуюча. Пояснення: Містить позитивний обов’язок діяти.'
+                  },
+                  {
+                    text: 'ККУ, ст. 185 ч. 1: Таємне викрадення чужого майна (крадіжка) карається штрафом … або громадськими роботами …, або виправними роботами …, або пробаційним наглядом …, або обмеженням волі ….',
+                    options: ['Зобов’язуючі', 'Забороняючі', 'Уповноважуючі'],
+                    correctIndex: 1,
+                    explanation: 'Забороняюча. Пояснення: Встановлює заборону на кримінально протиправне діяння.'
+                  },
+                  {
+                    text: 'ЦКУ, ст. 317 ч. 1: «власникові належать права володіння, користування та розпоряджання».',
+                    options: ['Зобов’язуючі', 'Забороняючі', 'Уповноважуючі'],
+                    correctIndex: 2,
+                    explanation: 'Уповноважуюча. Пояснення: Надає власникові юридичні можливості щодо майна.'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: 't7',
+            type: 'combo_decoder',
+            title: 'Завдання 7. Комплексна класифікація шести норм',
+            instruction: 'У кожному тесті обери одну комбінацію, що правильно характеризує норму за критеріями: галузева належність; матеріальна/процесуальна; зобов’язуюча/забороняюча/уповноважуюча; імперативна/диспозитивна.',
+            questions: [
+              {
+                num: 1,
+                norm: 'Конституція України, ст. 8: «В Україні визнається і діє принцип верховенства права».',
+                options: [
+                  { label: 'А) Конституційна; матеріальна; норма-принцип.', explanation: 'Правильно: закріплює конституційну засаду, а не процесуальний порядок.' },
+                  { label: 'Б) Цивільна; процесуальна; диспозитивна.', explanation: 'Це не цивільна норма й вона не визначає процедуру.' },
+                  { label: 'В) Кримінальна; матеріальна; забороняюча.', explanation: 'Не встановлює склад кримінального правопорушення чи заборону конкретного діяння.' },
+                  { label: 'Г) Адміністративна; процесуальна; зобов’язуюча.', explanation: 'Не регулює адміністративну процедуру.' }
+                ],
+                correctIndex: 0
+              },
+              {
+                num: 2,
+                norm: 'ЦКУ, ст. 317 ч. 1: «власникові належать права володіння, користування та розпоряджання майном».',
+                options: [
+                  { label: 'А) Кримінальна; матеріальна; забороняюча.', explanation: 'Це не кримінально-правова заборона.' },
+                  { label: 'Б) Цивільна; матеріальна; уповноважуюча.', explanation: 'Норма визначає зміст права власності та правомочності власника.' },
+                  { label: 'В) Цивільна; процесуальна; зобов’язуюча.', explanation: 'Вона не встановлює процедуру й не формулює обов’язок.' },
+                  { label: 'Г) Трудова; матеріальна; імперативна.', explanation: 'Предметом є право власності, а не трудові відносини.' }
+                ],
+                correctIndex: 1
+              },
+              {
+                num: 3,
+                norm: 'КЗпП, ст. 139: «працівники зобов’язані чесно й сумлінно працювати та додержувати трудової дисципліни».',
+                options: [
+                  { label: 'А) Трудова; матеріальна; зобов’язуюча.', explanation: 'Визначає обов’язки працівника в межах трудових відносин.' },
+                  { label: 'Б) Цивільна; процесуальна; уповноважуюча.', explanation: 'Не регулює цивільний процес і не надає правомочність власника.' },
+                  { label: 'В) Кримінальна; матеріальна; забороняюча.', explanation: 'Не встановлює кримінально-правову заборону.' },
+                  { label: 'Г) Кримінальна процесуальна; процесуальна; зобов’язуюча.', explanation: 'Не визначає дії органів кримінального провадження.' }
+                ],
+                correctIndex: 0
+              },
+              {
+                num: 4,
+                norm: 'ККУ, ст. 187 ч. 1: Напад з метою заволодіння чужим майном, поєднаний із насильством, небезпечним для життя чи здоров\'я особи, яка зазнала нападу, або з погрозою застосування такого насильства (розбій), - карається позбавленням волі на строк від трьох до семи років.',
+                options: [
+                  { label: 'А) Цивільна; матеріальна; уповноважуюча.', explanation: 'Норма не надає цивільне право, а встановлює кримінальну заборону.' },
+                  { label: 'Б) Кримінальна; матеріальна; забороняюча.', explanation: 'Описує кримінально протиправне діяння.' },
+                  { label: 'В) Кримінальна процесуальна; процесуальна; зобов’язуюча.', explanation: 'Не встановлює процедуру розслідування.' },
+                  { label: 'Г) Трудова; матеріальна; забороняюча.', explanation: 'Не стосується трудових відносин.' }
+                ],
+                correctIndex: 1
+              },
+              {
+                num: 5,
+                norm: 'КПК, ст. 214 ч. 1: слідчий, дізнавач або прокурор вносить відомості до ЄРДР не пізніше 24 годин після заяви чи повідомлення.',
+                options: [
+                  { label: 'А) Кримінальна; матеріальна; забороняюча.', explanation: 'Норма не визначає злочин і покарання.' },
+                  { label: 'Б) Кримінальна процесуальна; процесуальна; зобов’язуюча.', explanation: 'Встановлює обов’язкову процесуальну дію та строк.' },
+                  { label: 'В) Цивільна; матеріальна; уповноважуюча.', explanation: 'Не регулює майнові чи особисті немайнові відносини.' },
+                  { label: 'Г) Адміністративна; матеріальна; диспозитивна.', explanation: 'Не стосується адміністративної відповідальності.' }
+                ],
+                correctIndex: 1
+              },
+              {
+                num: 6,
+                norm: 'ККУ, ст. 127 ч. 1: Катування, тобто будь-яке умисне діяння, спрямоване на заподіяння особі сильного фізичного болю чи морального страждання, вчинене з метою примусити її чи іншу особу вчинити дії, що суперечать їх волі, у тому числі отримати інформацію чи зізнання, або з метою покарати її чи іншу особу за дії, вчинені нею або іншою особою чи у вчиненні яких вона або інша особа підозрюється, або з метою залякування її або інших осіб, - карається позбавленням волі на строк від трьох до шести років.',
+                options: [
+                  { label: 'А) Кримінальна; матеріальна; санкція відносно визначена.', explanation: 'Установлено нижню й верхню межі покарання.' },
+                  { label: 'Б) Кримінальна процесуальна; процесуальна; санкція абсолютно визначена.', explanation: 'Це кримінально-правова санкція, а не процесуальне правило; строк задано межами.' },
+                  { label: 'В) Цивільна; матеріальна; санкція альтернативна.', explanation: 'Норма належить до ККУ й не пропонує кілька альтернативних покарань у цьому фрагменті.' },
+                  { label: 'Г) Трудова; матеріальна; диспозиція відносно визначена.', explanation: 'Це санкція кримінально-правової норми, не трудова диспозиція.' }
+                ],
+                correctIndex: 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: 'БЛОК 4. СТРУКТУРА НОРМИ ПРАВА',
+        subtitle: 'Внутрішня будова правової норми: гіпотеза, диспозиція, санкція та їх різновиди',
+        rankId: 'rank_4',
+        color: 'amber',
+        tasks: [
+          {
+            id: 't8',
+            type: 'connect_lines',
+            badgeLabel: 'МЕХАНІКА: ЛІНІЇ З\'ЄДНАННЯ ЕЛЕМЕНТІВ НОРМИ',
+            nextBtnLabel: 'Перейти до Завдання 9 ➡️',
+            title: 'Завдання 8. Встанови відповідність між елементом і визначенням',
+            instruction: 'З’єднай кожен із трьох структурних елементів норми права з його точним визначенням за допомогою ліній.',
+            pairs: [
+              {
+                id: 's1',
+                left: 'Гіпотеза',
+                right: 'Частина норми, яка визначає життєві обставини, за наявності або відсутності яких правило починає діяти.'
+              },
+              {
+                id: 's2',
+                left: 'Диспозиція',
+                right: 'Частина норми, яка формулює саме правило поведінки: права, обов’язки або заборони.'
+              },
+              {
+                id: 's3',
+                left: 'Санкція',
+                right: 'Частина норми, яка визначає наслідки порушення диспозиції, зокрема заходи державного примусу.'
+              }
+            ]
+          },
+          {
+            id: 't9',
+            type: 'xray_norm',
+            title: 'Завдання 9. Визнач структурний елемент у виділеному фрагменті',
+            instruction: 'Уважно розглянь виділений неоново-золотим маркером фрагмент норми права та натисни на відповідний структурний елемент.',
+            items: [
+              {
+                num: 1,
+                source: 'ЦКУ, ст. 317 ч. 1',
+                prefix: '',
+                highlighted: '«Власникові належать права володіння, користування та розпоряджання своїм майном».',
+                suffix: '',
+                question: 'Який структурний елемент представлено?',
+                options: ['А) гіпотеза', 'Б) диспозиція', 'В) санкція'],
+                correctIndex: 1,
+                answerLabel: 'Диспозиція.',
+                explanation: 'Пояснення: Фрагмент формулює правомочності власника.'
+              },
+              {
+                num: 2,
+                source: 'ККУ, ст. 127 ч. 1',
+                prefix: '«Катування, тобто будь-яке умисне діяння, спрямоване на заподіяння особі сильного фізичного болю чи морального страждання, вчинене з метою примусити її чи іншу особу вчинити дії, що суперечать їх волі, у тому числі отримати інформацію чи зізнання, або з метою покарати її чи іншу особу за дії, вчинені нею або іншою особою чи у вчиненні яких вона або інша особа підозрюється, або з метою залякування її або інших осіб, - ',
+                highlighted: 'карається позбавленням волі на строк від трьох до шести років',
+                suffix: '».',
+                question: 'Який структурний елемент представлено?',
+                options: ['А) гіпотеза', 'Б) диспозиція', 'В) санкція'],
+                correctIndex: 2,
+                answerLabel: 'Санкція.',
+                explanation: 'Пояснення: Фрагмент установлює вид і межі покарання.'
+              },
+              {
+                num: 3,
+                source: 'ККУ, ст. 22 ч. 1',
+                prefix: '«Кримінальній відповідальності підлягають особи, ',
+                highlighted: 'яким до вчинення кримінального правопорушення виповнилося шістнадцять років',
+                suffix: '».',
+                question: 'Який структурний елемент представлено?',
+                options: ['А) гіпотеза', 'Б) диспозиція', 'В) санкція'],
+                correctIndex: 0,
+                answerLabel: 'Гіпотеза.',
+                explanation: 'Пояснення: Вік є юридично значущою обставиною, за якої особа може підлягати кримінальній відповідальності.'
+              },
+              {
+                num: 4,
+                source: 'КПК, ст. 214 ч. 1',
+                prefix: '«Слідчий, дізнавач, прокурор невідкладно, але не пізніше 24 годин після подання заяви… ',
+                highlighted: 'зобов’язаний внести відповідні відомості до ЄРДР',
+                suffix: '».',
+                question: 'Який структурний елемент представлено?',
+                options: ['А) гіпотеза', 'Б) диспозиція', 'В) санкція'],
+                correctIndex: 1,
+                answerLabel: 'Диспозиція.',
+                explanation: 'Пояснення: Фрагмент визначає обов’язкову процесуальну дію.'
+              },
+              {
+                num: 5,
+                source: 'КУпАП, ст. 173',
+                prefix: '«Дрібне хуліганство, тобто нецензурна лайка в громадських місцях, образливе чіпляння до громадян та інші подібні дії, що порушують громадський порядок і спокій громадян, — ',
+                highlighted: 'тягне за собою накладення штрафу від трьох до семи неоподатковуваних мінімумів доходів громадян або громадські роботи на строк від сорока до шістдесяти годин, або виправні роботи на строк від одного до двох місяців з відрахуванням двадцяти процентів заробітку, або адміністративний арешт на строк до п\'ятнадцяти діб',
+                suffix: '».',
+                question: 'Який структурний елемент представлено?',
+                options: ['А) гіпотеза', 'Б) диспозиція', 'В) санкція'],
+                correctIndex: 2,
+                answerLabel: 'Санкція.',
+                explanation: 'Пояснення: Це частина, яка визначає адміністративне стягнення.'
+              }
+            ]
+          },
+          {
+            id: 't10',
+            type: 'dossier_analyzer',
+            title: 'Завдання 10. Визнач тип структурного елемента',
+            instruction: 'Скористайся інформаційною карткою «Довідка експерта» та визнач вид гіпотези, диспозиції або санкції у кожному прикладі.',
+            referenceSections: [
+              {
+                title: 'Гіпотези (бувають абсолютно визначені, відносно визначені або альтернативні)',
+                color: 'indigo',
+                items: [
+                  { name: 'Абсолютно визначена', desc: 'дається вичерпний перелік обставин, за наявності або відсутності яких діє певне правило;' },
+                  { name: 'Відносно визначена', desc: 'такий вичерпний перелік обставин відсутній;' },
+                  { name: 'Альтернативна', desc: 'дія норми пов\'язана з однією або кількома обставинами.' }
+                ]
+              },
+              {
+                title: 'Диспозиції (поділяються за ступенем визначеності правила поведінки)',
+                color: 'teal',
+                items: [
+                  { name: 'Абсолютно визначена', desc: 'чітко визначає права і обов\'язки;' },
+                  { name: 'Відносно визначена', desc: 'не містить чіткого їх переліку;' },
+                  { name: 'Альтернативна', desc: 'указує на декілька можливих варіантів дій.' }
+                ]
+              },
+              {
+                title: 'Санкції (розрізняють за визначеністю виду і міри відповідальності)',
+                color: 'amber',
+                items: [
+                  { name: 'Абсолютно визначені', desc: 'точно визначають вид і міру відповідальності, наприклад розмір штрафу;' },
+                  { name: 'Відносно визначені', desc: 'визначають лише вищу і нижчу межі покарання, наприклад позбавлення волі на строк від 5 до 7 років;' },
+                  { name: 'Альтернативні', desc: 'указують на можливість застосування одного з перелічених заходів впливу, або... або.' }
+                ]
+              }
+            ],
+            items: [
+              {
+                num: 1,
+                prompt: 'Визнач тип гіпотези:',
+                source: 'ККУ, ст. 22 ч. 1',
+                text: 'Кримінальній відповідальності підлягають особи, яким до вчинення правопорушення виповнилося 16 років.',
+                options: ['А) абсолютно визначена', 'Б) відносно визначена', 'В) альтернативна'],
+                correctIndex: 0,
+                answerLabel: 'Абсолютно визначена.',
+                explanation: 'Пояснення: Вікову умову сформульовано чітко й однозначно.'
+              },
+              {
+                num: 2,
+                prompt: 'Визнач тип гіпотези:',
+                source: 'КУпАП, ст. 175-1 ч. 1',
+                text: 'Куріння  тютюнових виробів у місцях, де це заборонено  законом, а також в інших місцях, визначених рішенням відповідної сільської, селищної, міської ради, - тягне за собою попередження або накладення штрафу від трьох до десяти неоподатковуваних мінімумів доходів громадян.',
+                options: ['А) абсолютно визначена', 'Б) відносно визначена', 'В) альтернативна'],
+                correctIndex: 1,
+                answerLabel: 'Відносно визначена.',
+                explanation: 'Пояснення: У статті не наведено вичерпного переліку місць, у яких заборонено куріння. Для встановлення цих обставин потрібно звернутися до інших нормативних приписів.'
+              },
+              {
+                num: 3,
+                prompt: 'Визнач тип диспозиції:',
+                source: 'ЦКУ, ст. 317 ч. 1',
+                text: 'Власникові належать права володіння, користування та розпоряджання майном.',
+                options: ['А) абсолютно визначена', 'Б) відносно визначена', 'В) альтернативна'],
+                correctIndex: 0,
+                answerLabel: 'Абсолютно визначена (навчальна класифікація).',
+                explanation: 'Пояснення: У фрагменті чітко названо три правомочності власника.'
+              },
+              {
+                num: 4,
+                prompt: 'Визнач тип санкції:',
+                source: 'ККУ, ст. 127 ч. 1',
+                text: 'Катування, тобто будь-яке умисне діяння, спрямоване на заподіяння особі сильного фізичного болю чи морального страждання, вчинене з метою примусити її чи іншу особу вчинити дії, що суперечать їх волі, у тому числі отримати інформацію чи зізнання, або з метою покарати її чи іншу особу за дії, вчинені нею або іншою особою чи у вчиненні яких вона або інша особа підозрюється, або з метою залякування її або інших осіб, - карається позбавленням волі на строк від трьох до шести років.',
+                options: ['А) абсолютно визначена', 'Б) відносно визначена', 'В) альтернативна'],
+                correctIndex: 1,
+                answerLabel: 'Відносно визначена.',
+                explanation: 'Пояснення: Указано нижню та верхню межі покарання.'
+              },
+              {
+                num: 5,
+                prompt: 'Визнач тип санкції:',
+                source: 'ККУ, ст. 126 ч. 1',
+                text: 'Умисне завдання удару, побоїв або вчинення інших насильницьких дій, які завдали фізичного болю і не спричинили тілесних ушкоджень, - карається штрафом до п\'ятдесяти неоподатковуваних мінімумів доходів громадян або громадськими роботами на строк до двохсот годин, або виправними роботами на строк до одного року.',
+                options: ['А) абсолютно визначена', 'Б) відносно визначена', 'В) альтернативна'],
+                correctIndex: 2,
+                answerLabel: 'Альтернативна.',
+                explanation: 'Пояснення: Передбачено вибір одного з кількох видів покарання.'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: 'БЛОК 5. ПІДСУМКОВИЙ',
+        subtitle: 'Комплексний фаховий аналіз правових норм за всіма вивченими критеріями',
+        rankId: 'rank_5',
+        color: 'emerald',
+        tasks: [
+          {
+            id: 't11',
+            type: 'supreme_console',
+            title: 'Підсумкове завдання: здійсни комплексний аналіз наведеної норми',
+            instruction: 'Обери правильний варіант з випадних списків, що є під кожною нормою.',
+            fields: [
+              { key: 'source', label: 'Джерело', options: ['Правовий звичай', 'Правовий прецедент', 'Нормативно-правовий акт', 'Міжнародний договір'] },
+              { key: 'branch', label: 'Галузь', options: ['Цивільне право', 'Трудове право', 'Конституційне право', 'Адміністративне право', 'Кримінальне право', 'Кримінальне процесуальне право'] },
+              { key: 'generalization', label: 'За ступенем узагальнення', options: ['Загальна норма', 'Конкретна норма', 'Норма-принцип'] },
+              { key: 'nature', label: 'За характером правовідносин', options: ['Матеріальна', 'Процесуальна'] },
+              { key: 'method', label: 'За способом регулювання', options: ['Диспозитивна', 'Імперативна'] },
+              { key: 'completeness', label: 'За повнотою викладу', options: ['Пряма', 'Відсильна', 'Бланкетна'] },
+              { key: 'prescription', label: 'За формою припису', options: ['Уповноважуюча', 'Забороняюча', 'Зобов’язуюча'] },
+              { key: 'dispositionType', label: 'Тип диспозиції', options: ['Абсолютно визначена', 'Відносно визначена', 'Альтернативна', 'Диспозиція відсутня'] },
+              { key: 'hypothesisType', label: 'Тип гіпотези', options: ['Абсолютно визначена', 'Відносно визначена', 'Альтернативна', 'Гіпотеза відсутня'] },
+              { key: 'sanctionType', label: 'Тип санкції', options: ['Абсолютно визначена', 'Відносно визначена', 'Альтернативна', 'Санкція відсутня'] }
+            ],
+            norms: [
+              {
+                num: 1,
+                heading: 'Норма 1. Стаття 173 Кодексу України про адміністративні правопорушення (КУпАП). Дрібне хуліганство',
+                text: 'Дрібне хуліганство, тобто нецензурна лайка в громадських місцях, образливе чіпляння до громадян та інші подібні дії, що порушують громадський порядок і спокій громадян, —\nтягне за собою накладення штрафу від трьох до семи неоподатковуваних мінімумів доходів громадян або громадські роботи на строк від сорока до шістдесяти годин, або виправні роботи на строк від одного до двох місяців з відрахуванням двадцяти процентів заробітку, або адміністративний арешт на строк до п\'ятнадцяти діб.',
+                answers: {
+                  source: 'Нормативно-правовий акт',
+                  branch: 'Адміністративне право',
+                  generalization: 'Конкретна норма',
+                  nature: 'Матеріальна',
+                  method: 'Імперативна',
+                  completeness: 'Пряма',
+                  prescription: 'Забороняюча',
+                  dispositionType: 'Відносно визначена',
+                  hypothesisType: 'Гіпотеза відсутня',
+                  sanctionType: 'Альтернативна'
+                }
+              },
+              {
+                num: 2,
+                heading: 'Норма 2. Стаття 627 ЦК України. Свобода договору',
+                text: 'Відповідно до статті 6 цього Кодексу сторони є вільними в укладенні договору, виборі контрагента та визначенні умов договору з урахуванням вимог цього Кодексу, інших актів цивільного законодавства, звичаїв ділового обороту, вимог розумності та справедливості.',
+                answers: {
+                  source: 'Нормативно-правовий акт',
+                  branch: 'Цивільне право',
+                  generalization: 'Норма-принцип',
+                  nature: 'Матеріальна',
+                  method: 'Диспозитивна',
+                  completeness: 'Відсильна',
+                  prescription: 'Уповноважуюча',
+                  dispositionType: 'Абсолютно визначена',
+                  hypothesisType: 'Гіпотеза відсутня',
+                  sanctionType: 'Санкція відсутня'
+                }
+              },
+              {
+                num: 3,
+                heading: 'Норма 3. Частина 1 статті 214 Кримінального процесуального кодексу України. Початок досудового розслідування',
+                text: 'Слідчий, дізнавач, прокурор невідкладно, але не пізніше 24 годин після подання заяви, повідомлення про вчинене кримінальне правопорушення або після самостійного виявлення ним з будь-якого джерела обставин, що можуть свідчити про вчинення кримінального правопорушення, зобов’язаний внести відповідні відомості до Єдиного реєстру досудових розслідувань, розпочати розслідування та через 24 години з моменту внесення таких відомостей надати заявнику витяг з Єдиного реєстру досудових розслідувань.',
+                answers: {
+                  source: 'Нормативно-правовий акт',
+                  branch: 'Кримінальне процесуальне право',
+                  generalization: 'Конкретна норма',
+                  nature: 'Процесуальна',
+                  method: 'Імперативна',
+                  completeness: 'Пряма',
+                  prescription: 'Зобов’язуюча',
+                  dispositionType: 'Абсолютно визначена',
+                  hypothesisType: 'Альтернативна',
+                  sanctionType: 'Санкція відсутня'
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ];
+  </script>
+
+  <!-- ІГРОВА ЛОГІКА ТА УПРАВЛІННЯ СТАНОМ -->
+  <script>
+    const GameState = {
+      screen: 'welcome', // 'welcome' | 'block_intro' | 'playing' | 'block_complete' | 'final_victory'
+      currentBlockIdx: 0,
+      currentTaskIdx: 0,
+      score: 0,
+      totalAttempts: 0,
+      streak: 0,
+      maxStreak: 0,
+      unlockedRanks: [],
+      unlockedBadges: [],
+      unlockedCrests: [],
+      completedTasks: {},
+      completedBlocks: [],
+      blockMistakes: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+      questionStartTime: Date.now(),
+      taskLocalState: {}
+    };
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function getSuccessRate() {
+      if (GameState.totalAttempts === 0) return 0;
+      return Math.round((GameState.score / GameState.totalAttempts) * 100);
+    }
+
+    function recordAnswer(isCorrect, blockId) {
+      const elapsedSec = (Date.now() - GameState.questionStartTime) / 1000;
+      GameState.totalAttempts++;
+      if (isCorrect) {
+        GameState.score++;
+        GameState.streak++;
+        if (GameState.streak > GameState.maxStreak) {
+          GameState.maxStreak = GameState.streak;
+        }
+        SoundFX.play('correct');
+
+        if (GameState.streak === 3) unlockBadge('badge_streak3');
+        if (GameState.streak === 7) unlockBadge('badge_streak7');
+        if (elapsedSec <= 12) unlockBadge('badge_sprinter');
+      } else {
+        GameState.streak = 0;
+        if (blockId) GameState.blockMistakes[blockId] = (GameState.blockMistakes[blockId] || 0) + 1;
+        SoundFX.play('wrong');
+      }
+
+      checkCrests();
+      updateHUD();
+      GameState.questionStartTime = Date.now();
+    }
+
+    function checkCrests() {
+      const rate = getSuccessRate();
+      CRESTS_DATA.forEach(c => {
+        const minReq = c.id === 'crest_bronze' ? 10 : c.id === 'crest_silver' ? 15 : 20;
+        if (GameState.totalAttempts >= minReq && rate >= c.threshold) {
+          if (!GameState.unlockedCrests.includes(c.id)) {
+            GameState.unlockedCrests.push(c.id);
+            showAwardToast('Гербова печатка Феміди', c.title, c.icon, 'amber');
+            SoundFX.play('award');
+          }
+        }
+      });
+    }
+
+    function unlockRank(rankId) {
+      if (!GameState.unlockedRanks.includes(rankId)) {
+        GameState.unlockedRanks.push(rankId);
+        const r = RANKS_DATA.find(x => x.id === rankId);
+        if (r) {
+          showAwardToast('Нове академічне звання!', r.title, r.icon, 'indigo');
+          SoundFX.play('award');
+        }
+      }
+      updateHUD();
+    }
+
+    function unlockBadge(badgeId) {
+      if (!GameState.unlockedBadges.includes(badgeId)) {
+        GameState.unlockedBadges.push(badgeId);
+        const b = BADGES_DATA.find(x => x.id === badgeId);
+        if (b) {
+          showAwardToast('Отримано значок досягнення!', b.title, b.icon, 'teal');
+          SoundFX.play('award');
+        }
+      }
+      updateHUD();
+    }
+
+    function showAwardToast(category, title, icon, color) {
+      const container = document.getElementById('award-toast-container');
+      const toast = document.createElement('div');
+      const borderClass = color === 'amber' ? 'border-amber-400 bg-amber-50' : color === 'teal' ? 'border-teal-400 bg-teal-50' : 'border-indigo-400 bg-indigo-50';
+      toast.className = `pop-in-3d pointer-events-auto p-4 rounded-2xl border-2 ${borderClass} shadow-xl flex items-center gap-3.5`;
+      toast.innerHTML = `
+        <div class="w-12 h-12 rounded-xl bg-white shadow flex items-center justify-center text-2xl shrink-0 border border-slate-200">${icon}</div>
+        <div>
+          <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">${category}</div>
+          <div class="text-sm font-black text-indigo-950">${title}</div>
+        </div>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(12px)';
+        toast.style.transition = 'all 0.35s ease';
+        setTimeout(() => toast.remove(), 350);
+      }, 4200);
+    }
+
+    function updateHUD() {
+      document.getElementById('hud-score').textContent = GameState.score;
+      document.getElementById('hud-total').textContent = GameState.totalAttempts;
+      document.getElementById('hud-percent').textContent = `${getSuccessRate()}%`;
+      document.getElementById('hud-streak').textContent = GameState.streak;
+
+      const totalAwards = GameState.unlockedRanks.length + GameState.unlockedBadges.length + GameState.unlockedCrests.length;
+      document.getElementById('hud-awards-count').textContent = totalAwards;
+
+      if (GameState.unlockedRanks.length > 0) {
+        const lastRankId = GameState.unlockedRanks[GameState.unlockedRanks.length - 1];
+        const r = RANKS_DATA.find(x => x.id === lastRankId);
+        if (r) {
+          document.getElementById('hud-rank-icon').textContent = r.icon;
+          document.getElementById('hud-rank-title').textContent = r.title;
+        }
+      }
+
+      const allTasksCount = GAME_BLOCKS.reduce((acc, b) => acc + b.tasks.length, 0);
+      const doneCount = Object.keys(GameState.completedTasks).length;
+      const pct = Math.min(100, Math.round((doneCount / allTasksCount) * 100));
+      document.getElementById('global-progress-bar').style.width = `${pct}%`;
+    }
+
+    function goHome() {
+      SoundFX.play('click');
+      GameState.screen = 'welcome';
+      render();
+    }
+
+    function startBlock(blockIdx) {
+      SoundFX.play('click');
+      GameState.currentBlockIdx = blockIdx;
+      GameState.currentTaskIdx = 0;
+      GameState.screen = 'playing';
+      GameState.questionStartTime = Date.now();
+      render();
+    }
+
+    function openTrophyModal() {
+      SoundFX.play('click');
+      const modal = document.getElementById('trophy-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      document.getElementById('modal-ranks-grid').innerHTML = RANKS_DATA.map(r => {
+        const unlocked = GameState.unlockedRanks.includes(r.id);
+        return `
+          <div class="p-3.5 rounded-2xl border-2 transition-all ${unlocked ? 'bg-indigo-50 border-indigo-400 shadow-sm' : 'bg-slate-50 border-slate-200 opacity-60'}">
+            <div class="flex items-center gap-2.5 mb-1.5">
+              <span class="text-2xl">${unlocked ? r.icon : '🔒'}</span>
+              <div class="font-extrabold text-sm text-indigo-950">${r.title}</div>
+            </div>
+            <p class="text-xs text-slate-600">${r.desc}</p>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('modal-badges-grid').innerHTML = BADGES_DATA.map(b => {
+        const unlocked = GameState.unlockedBadges.includes(b.id);
+        return `
+          <div class="p-3.5 rounded-2xl border-2 transition-all ${unlocked ? 'bg-teal-50 border-teal-400 shadow-sm' : 'bg-slate-50 border-slate-200 opacity-60'}">
+            <div class="flex items-center gap-2.5 mb-1.5">
+              <span class="text-2xl">${unlocked ? b.icon : '🔒'}</span>
+              <div class="font-extrabold text-sm text-teal-950">${b.title}</div>
+            </div>
+            <p class="text-xs text-slate-600">${b.desc}</p>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('modal-crests-grid').innerHTML = CRESTS_DATA.map(c => {
+        const unlocked = GameState.unlockedCrests.includes(c.id);
+        return `
+          <div class="p-3.5 rounded-2xl border-2 transition-all ${unlocked ? 'bg-amber-50 border-amber-400 shadow-sm' : 'bg-slate-50 border-slate-200 opacity-60'}">
+            <div class="flex items-center gap-2.5 mb-1.5">
+              <span class="text-2xl">${unlocked ? c.icon : '🔒'}</span>
+              <div class="font-extrabold text-sm text-amber-950">${c.title}</div>
+            </div>
+            <p class="text-xs text-slate-600">${c.desc}</p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function closeTrophyModal() {
+      const modal = document.getElementById('trophy-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function openMapModal() {
+      SoundFX.play('click');
+      const modal = document.getElementById('map-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      document.getElementById('modal-map-list').innerHTML = GAME_BLOCKS.map((b, bIdx) => {
+        const blockDone = GameState.completedBlocks.includes(b.id);
+        return `
+          <div class="p-4 rounded-2xl border-2 ${blockDone ? 'bg-emerald-50/70 border-emerald-300' : 'bg-slate-50 border-slate-200'}">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div>
+                <span class="text-xs font-extrabold uppercase text-indigo-600">${blockDone ? '✅ Завершено' : 'Навчальний модуль'}</span>
+                <h4 class="font-black text-indigo-950">${b.title}</h4>
+              </div>
+              <button onclick="closeMapModal(); startBlock(${bIdx});" class="btn-3d btn-3d-indigo px-3.5 py-1.5 rounded-xl text-xs font-bold">
+                Перейти до блоку
+              </button>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-2">
+              ${b.tasks.map((t, tIdx) => {
+                const tDone = !!GameState.completedTasks[t.id];
+                return `
+                  <button onclick="closeMapModal(); jumpToTask(${bIdx}, ${tIdx});"
+                    class="px-3 py-1.5 rounded-lg text-xs font-bold border ${tDone ? 'bg-emerald-100 border-emerald-400 text-emerald-900' : 'bg-white border-slate-300 text-slate-700 hover:border-indigo-400'}">
+                    ${tDone ? '✓ ' : ''}${t.title.split('.')[0]}
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function closeMapModal() {
+      const modal = document.getElementById('map-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function jumpToTask(bIdx, tIdx) {
+      GameState.currentBlockIdx = bIdx;
+      GameState.currentTaskIdx = tIdx;
+      GameState.screen = 'playing';
+      GameState.questionStartTime = Date.now();
+      render();
+    }
+
+    function completeCurrentTask() {
+      const block = GAME_BLOCKS[GameState.currentBlockIdx];
+      const task = block.tasks[GameState.currentTaskIdx];
+      GameState.completedTasks[task.id] = true;
+      updateHUD();
+
+      if (GameState.currentTaskIdx + 1 < block.tasks.length) {
+        GameState.currentTaskIdx++;
+        GameState.questionStartTime = Date.now();
+        GameState.screen = 'playing';
+        render();
+      } else {
+        if (!GameState.completedBlocks.includes(block.id)) {
+          GameState.completedBlocks.push(block.id);
+        }
+        unlockRank(block.rankId);
+
+        if (block.id === 3 && GameState.blockMistakes[3] === 0) {
+          unlockBadge('badge_deduction');
+        }
+        if (block.id === 4 && GameState.blockMistakes[4] === 0) {
+          unlockBadge('badge_architect');
+        }
+        if (block.id === 5) {
+          unlockBadge('badge_supreme');
+        }
+
+        if (GameState.currentBlockIdx + 1 < GAME_BLOCKS.length) {
+          GameState.screen = 'block_complete';
+        } else {
+          if (getSuccessRate() >= 75) {
+            unlockRank('rank_master');
+          }
+          GameState.screen = 'final_victory';
+        }
+        render();
+      }
+    }
+
+    /* ============================================================================
+       РЕНДЕРИНГ ЕКРАНІВ
+       ============================================================================ */
+    function render() {
+      const container = document.getElementById('app-container');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (GameState.screen === 'welcome') {
+        renderWelcomeScreen(container);
+      } else if (GameState.screen === 'playing') {
+        renderTaskScreen(container);
+      } else if (GameState.screen === 'block_complete') {
+        renderBlockCompleteScreen(container);
+      } else if (GameState.screen === 'final_victory') {
+        renderFinalVictoryScreen(container);
+      }
+    }
+
+    function renderWelcomeScreen(container) {
+      container.innerHTML = `
+        <div class="card-3d rounded-3xl p-6 sm:p-10 mb-8 relative overflow-hidden">
+          <div class="flex flex-col lg:flex-row items-center gap-8">
+            <div class="flex-1 text-center lg:text-left">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-100 text-indigo-800 text-xs font-extrabold mb-4">
+                <span>🏛️</span> ІНТЕРАКТИВНА НАВЧАЛЬНА ГРА • 10 КЛАС
+              </div>
+              <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-indigo-950 tracking-tight leading-tight mb-4">
+                Академія <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-teal-600 to-amber-600">правознавства</span>
+              </h2>
+              <p class="text-base sm:text-lg font-semibold text-slate-700 mb-3">
+                Навчальна тема: <span class="text-indigo-900 font-extrabold">«Норма права. Структура норми права»</span>
+              </p>
+              <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                Пройдіть 5 навчальних блоків із різними інтерактивними механіками: встановлюйте зв’язки лініями, будуйте піраміду системи права, визначайте джерела й види норм та досліджуйте їхню структуру. Здобудьте всі 5 звань, значки досягнень і почесний титул <strong class="text-indigo-900">«Майстер правознавства»</strong>!
+              </p>
+              <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                <button onclick="startBlock(0)" class="btn-3d btn-3d-indigo px-7 py-4 rounded-2xl font-extrabold text-base flex items-center gap-2.5">
+                  <span>🚀</span>
+                  <span>Розпочати навчання з Блоку 1</span>
+                </button>
+                <button onclick="openTrophyModal()" class="btn-3d btn-3d-white px-5 py-4 rounded-2xl font-bold text-sm flex items-center gap-2">
+                  <span>🏆</span>
+                  <span>Система відзнак</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Геометрична 3D емблема Академії -->
+            <div class="w-56 h-56 sm:w-64 sm:h-64 shrink-0 relative flex items-center justify-center">
+              <svg viewBox="0 0 240 240" class="w-full h-full drop-shadow-xl animate-float-slow">
+                <polygon points="120,14 214,68 214,172 120,226 26,172 26,68" fill="#312e81" />
+                <polygon points="120,14 214,68 120,120 26,68" fill="#4f46e5" />
+                <polygon points="26,68 120,120 120,226 26,172" fill="#3730a3" />
+                <polygon points="214,68 214,172 120,226 120,120" fill="#0d9488" />
+                <polygon points="120,34 194,76 194,164 120,206 46,164 46,76" fill="none" stroke="#fbbf24" stroke-width="3" />
+                <g transform="translate(72, 72)" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="48" y1="12" x2="48" y2="84" />
+                  <line x1="20" y1="26" x2="76" y2="26" />
+                  <polygon points="20,26 8,54 32,54" fill="#fbbf24" stroke="#fbbf24" stroke-width="2" />
+                  <polygon points="76,26 64,54 88,54" fill="#fbbf24" stroke="#fbbf24" stroke-width="2" />
+                  <line x1="28" y1="84" x2="68" y2="84" stroke="#fbbf24" stroke-width="6" />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Картки 5 Блоків Академії -->
+        <h3 class="text-lg font-black text-indigo-950 mb-4 flex items-center gap-2">
+          <span>📚</span> Навчальні блоки та система звань
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          ${GAME_BLOCKS.map((b, idx) => {
+            const rank = RANKS_DATA.find(r => r.id === b.rankId);
+            const isDone = GameState.completedBlocks.includes(b.id);
+            return `
+              <div onclick="startBlock(${idx})" class="card-3d card-3d-hover rounded-2xl p-5 cursor-pointer flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between gap-2 mb-3">
+                    <span class="px-2.5 py-1 rounded-lg text-xs font-extrabold bg-indigo-100 text-indigo-800">Блок ${b.id}</span>
+                    <span class="text-xs font-bold ${isDone ? 'text-emerald-600' : 'text-slate-400'}">${isDone ? '✅ Пройдено' : `${b.tasks.length} завд.`}</span>
+                  </div>
+                  <h4 class="text-base font-black text-indigo-950 mb-1.5">${b.title}</h4>
+                  <p class="text-xs text-slate-600 leading-relaxed mb-4">${b.subtitle}</p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="text-lg">${rank.icon}</span>
+                    <span class="text-xs font-extrabold text-indigo-900">${rank.title}</span>
+                  </div>
+                  <span class="text-indigo-600 font-black text-sm">→</span>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    function renderTaskScreen(container) {
+      const block = GAME_BLOCKS[GameState.currentBlockIdx];
+      const task = block.tasks[GameState.currentTaskIdx];
+
+      container.innerHTML = `
+        <!-- Навігаційна шапка поточного блоку -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+          <div>
+            <div class="text-xs font-extrabold uppercase tracking-wider text-indigo-600">${block.title}</div>
+            <h2 class="text-lg sm:text-xl font-black text-indigo-950">Завдання ${GameState.currentTaskIdx + 1} з ${block.tasks.length} у блоці</h2>
+          </div>
+          <div class="flex items-center gap-1.5">
+            ${block.tasks.map((t, i) => `
+              <button onclick="jumpToTask(${GameState.currentBlockIdx}, ${i})"
+                class="w-8 h-8 rounded-xl text-xs font-extrabold transition-all ${i === GameState.currentTaskIdx ? 'bg-indigo-600 text-white shadow-md scale-110' : GameState.completedTasks[t.id] ? 'bg-emerald-500 text-white' : 'bg-white border border-slate-300 text-slate-600'}">
+                ${i + 1}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Контейнер ігрової механіки конкретного завдання -->
+        <div id="task-workspace" class="card-3d rounded-3xl p-5 sm:p-8"></div>
+      `;
+
+      const workspace = document.getElementById('task-workspace');
+
+      if (task.type === 'connect_lines') {
+        renderConnectLinesTask(workspace, block, task);
+      } else if (task.type === 'pyramid_order') {
+        renderPyramidOrderTask(workspace, block, task);
+      } else if (task.type === 'two_step_flip') {
+        renderTwoStepFlipTask(workspace, block, task);
+      } else if (task.type === 'stamp_scanner') {
+        renderStampScannerTask(workspace, block, task);
+      } else if (task.type === 'classification_lab') {
+        renderClassificationLabTask(workspace, block, task);
+      } else if (task.type === 'combo_decoder') {
+        renderComboDecoderTask(workspace, block, task);
+      } else if (task.type === 'xray_norm') {
+        renderXrayNormTask(workspace, block, task);
+      } else if (task.type === 'dossier_analyzer') {
+        renderDossierAnalyzerTask(workspace, block, task);
+      } else if (task.type === 'supreme_console') {
+        renderSupremeConsoleTask(workspace, block, task);
+      }
+    }
+
+    /* ============================================================================
+       МЕХАНІКА 1 (Завдання 1, 4 та 8): З'ЄДНАННЯ ПОНЯТЬ ЛІНІЯМИ (БЕЗ СТРІЛОК)
+       ============================================================================ */
+    function renderConnectLinesTask(workspace, block, task) {
+      if (!GameState.taskLocalState[task.id]) {
+        GameState.taskLocalState[task.id] = {
+          selectedLeft: null,
+          matchedIds: [],
+          shuffledRight: shuffleArray(task.pairs.map(p => ({ id: p.id, text: p.right }))),
+          wrongPair: null
+        };
+      }
+      const st = GameState.taskLocalState[task.id];
+      const allDone = st.matchedIds.length === task.pairs.length;
+      const badgeText = task.badgeLabel || 'МЕХАНІКА: ЛІНІЇ ВІДПОВІДНОСТІ';
+      const nextBtnText = task.nextBtnLabel || 'Наступне завдання ➡️';
+
+      workspace.innerHTML = `
+        <div class="mb-6">
+          <div class="inline-block px-3 py-1 rounded-lg bg-indigo-100 text-indigo-800 text-xs font-extrabold mb-2">${badgeText}</div>
+          <h3 class="text-xl sm:text-2xl font-black text-indigo-950">${task.title}</h3>
+          <p class="text-sm text-slate-600 mt-1">${task.instruction}</p>
+        </div>
+
+        <div class="relative" id="connect-arena">
+          <!-- SVG полотно для чистих з'єднувальних ліній (без стрілок) -->
+          <svg id="connect-svg" class="absolute inset-0 w-full h-full pointer-events-none z-10 hidden md:block">
+            <g id="connect-paths-${task.id}"></g>
+          </svg>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 relative z-20">
+            <!-- Ліва колонка: Поняття / елементи -->
+            <div class="space-y-3">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-indigo-500 mb-1">Поняття / Елемент</div>
+              ${task.pairs.map(p => {
+                const isMatched = st.matchedIds.includes(p.id);
+                const isSelected = st.selectedLeft === p.id;
+                const isWrong = st.wrongPair && st.wrongPair.left === p.id;
+                return `
+                  <button
+                    id="left-node-${p.id}"
+                    onclick="handleConnectLeft('${task.id}', '${p.id}')"
+                    ${isMatched ? 'disabled' : ''}
+                    class="w-full text-left p-4 rounded-2xl border-2 font-extrabold text-sm sm:text-base transition-all flex items-center justify-between gap-3
+                      ${isMatched ? 'bg-emerald-50 border-emerald-400 text-emerald-900' :
+                        isWrong ? 'bg-rose-50 border-rose-500 text-rose-900' :
+                        isSelected ? 'bg-indigo-600 border-indigo-800 text-white shadow-lg scale-[1.02]' :
+                        'bg-white hover:border-indigo-400 border-slate-200 text-indigo-950 shadow-sm'}">
+                    <span>${p.left}</span>
+                    <span class="w-4 h-4 rounded-full border-2 shrink-0 flex items-center justify-center text-[10px] ${isMatched ? 'bg-emerald-500 border-emerald-600 text-white' : isSelected ? 'bg-amber-400 border-white' : 'bg-indigo-100 border-indigo-400'}">
+                      ${isMatched ? '✓' : ''}
+                    </span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- Права колонка: Визначення -->
+            <div class="space-y-3">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-teal-600 mb-1">Визначення</div>
+              ${st.shuffledRight.map(r => {
+                const isMatched = st.matchedIds.includes(r.id);
+                const isWrong = st.wrongPair && st.wrongPair.right === r.id;
+                return `
+                  <button
+                    id="right-node-${r.id}"
+                    onclick="handleConnectRight(${block.id}, '${task.id}', '${r.id}')"
+                    ${isMatched ? 'disabled' : ''}
+                    class="w-full text-left p-4 rounded-2xl border-2 text-xs sm:text-sm font-medium leading-relaxed transition-all flex items-center gap-3
+                      ${isMatched ? 'bg-emerald-50 border-emerald-400 text-emerald-950' :
+                        isWrong ? 'bg-rose-50 border-rose-500 text-rose-950' :
+                        st.selectedLeft ? 'bg-white hover:bg-teal-50 hover:border-teal-500 border-indigo-200 text-slate-800 shadow-sm cursor-pointer' :
+                        'bg-white border-slate-200 text-slate-800'}">
+                    <span class="w-4 h-4 rounded-full border-2 shrink-0 ${isMatched ? 'bg-emerald-500 border-emerald-600' : 'bg-teal-100 border-teal-500'}"></span>
+                    <span>${r.text}</span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+
+        ${allDone ? `
+          <div class="mt-6 p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-300 flex flex-wrap items-center justify-between gap-4">
+            <div class="text-sm font-bold text-emerald-900">✅ Усі відповідності успішно з'єднано!</div>
+            <button onclick="completeCurrentTask()" class="btn-3d btn-3d-teal px-6 py-3 rounded-xl font-extrabold text-sm">
+              ${nextBtnText}
+            </button>
+          </div>
+        ` : ''}
+      `;
+
+      setTimeout(() => drawConnectLines(task.id), 30);
+    }
+
+    function handleConnectLeft(taskId, leftId) {
+      SoundFX.play('click');
+      const st = GameState.taskLocalState[taskId];
+      st.selectedLeft = leftId;
+      st.wrongPair = null;
+      render();
+    }
+
+    function handleConnectRight(blockId, taskId, rightId) {
+      const st = GameState.taskLocalState[taskId];
+      if (!st.selectedLeft) return;
+
+      if (st.selectedLeft === rightId) {
+        st.matchedIds.push(rightId);
+        st.selectedLeft = null;
+        st.wrongPair = null;
+        recordAnswer(true, blockId);
+        render();
+      } else {
+        st.wrongPair = { left: st.selectedLeft, right: rightId };
+        recordAnswer(false, blockId);
+        render();
+        setTimeout(() => {
+          if (GameState.taskLocalState[taskId]) {
+            GameState.taskLocalState[taskId].wrongPair = null;
+            render();
+          }
+        }, 700);
+      }
+    }
+
+    function drawConnectLines(taskId) {
+      const st = GameState.taskLocalState[taskId];
+      const pathsGroup = document.getElementById(`connect-paths-${taskId}`);
+      const arena = document.getElementById('connect-arena');
+      if (!pathsGroup || !arena || !st) return;
+
+      const arenaRect = arena.getBoundingClientRect();
+      pathsGroup.innerHTML = st.matchedIds.map(id => {
+        const leftEl = document.getElementById(`left-node-${id}`);
+        const rightEl = document.getElementById(`right-node-${id}`);
+        if (!leftEl || !rightEl) return '';
+        const lRect = leftEl.getBoundingClientRect();
+        const rRect = rightEl.getBoundingClientRect();
+        const x1 = lRect.right - arenaRect.left;
+        const y1 = lRect.top + lRect.height / 2 - arenaRect.top;
+        const x2 = rRect.left - arenaRect.left;
+        const y2 = rRect.top + rRect.height / 2 - arenaRect.top;
+        const cx1 = x1 + (x2 - x1) * 0.45;
+        const cx2 = x2 - (x2 - x1) * 0.45;
+        return `
+          <path d="M ${x1} ${y1} C ${cx1} ${y1}, ${cx2} ${y2}, ${x2} ${y2}" stroke="#10b981" stroke-width="3.5" fill="none" stroke-linecap="round" />
+          <circle cx="${x1}" cy="${y1}" r="4.5" fill="#10b981" />
+          <circle cx="${x2}" cy="${y2}" r="4.5" fill="#10b981" />
+        `;
+      }).join('');
+    }
+
+    window.addEventListener('resize', () => {
+      const block = GAME_BLOCKS[GameState.currentBlockIdx];
+      if (!block) return;
+      const task = block.tasks[GameState.currentTaskIdx];
+      if (task && task.type === 'connect_lines') {
+        drawConnectLines(task.id);
+      } else if (task && task.type === 'classification_lab') {
+        drawLabConnectLines(task.id);
+      }
+    });
+
+    /* ============================================================================
+       МЕХАНІКА 2 (Завдання 2): ПІРАМІДА ІЄРАРХІЇ СИСТЕМИ ПРАВА
+       ============================================================================ */
+    function renderPyramidOrderTask(workspace, block, task) {
+      if (!GameState.taskLocalState[task.id]) {
+        GameState.taskLocalState[task.id] = {
+          slots: [null, null, null, null],
+          pool: ['галузь права', 'норма права', 'система права', 'інститут права'],
+          isSolved: false,
+          errorMsg: ''
+        };
+      }
+      const st = GameState.taskLocalState[task.id];
+      const widths = ['w-full sm:w-3/5', 'w-full sm:w-4/6', 'w-full sm:w-5/6', 'w-full'];
+      const labels = ['1 рівень (найменша складова)', '2 рівень', '3 рівень', '4 рівень (найбільша складова)'];
+
+      workspace.innerHTML = `
+        <div class="mb-6">
+          <div class="inline-block px-3 py-1 rounded-lg bg-amber-100 text-amber-800 text-xs font-extrabold mb-2">МЕХАНІКА: 3D ПІРАМІДА ІЄРАРХІЇ</div>
+          <h3 class="text-xl sm:text-2xl font-black text-indigo-950">${task.title}</h3>
+          <p class="text-sm text-slate-600 mt-1">${task.instruction}</p>
+        </div>
+
+        <div class="mb-6">
+          <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Доступні елементи (натисніть, щоб розмістити):</div>
+          <div class="flex flex-wrap gap-2.5 min-h-[48px]">
+            ${st.pool.map(item => `
+              <button onclick="placePyramidItem('${task.id}', '${item}')"
+                class="btn-3d btn-3d-white px-4 py-2.5 rounded-xl font-extrabold text-sm text-indigo-950">
+                + ${item}
+              </button>
+            `).join('')}
+            ${st.pool.length === 0 && !st.isSolved ? '<span class="text-xs text-slate-400 italic py-2">Усі елементи розміщено у піраміді. Перевірте порядок!</span>' : ''}
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3 my-6 p-4 sm:p-6 rounded-2xl bg-indigo-50/70 border-2 border-indigo-100">
+          ${st.slots.map((val, idx) => `
+            <div onclick="${!st.isSolved && val ? `removePyramidItem('${task.id}', ${idx})` : ''}"
+              class="${widths[idx]} p-3.5 sm:p-4 rounded-2xl border-2 text-center transition-all cursor-pointer
+                ${st.isSolved ? 'bg-emerald-500 border-emerald-700 text-white shadow-md' :
+                  val ? 'bg-indigo-600 border-indigo-800 text-white shadow-md hover:bg-indigo-700' :
+                  'bg-white border-dashed border-indigo-300 text-slate-400'}">
+              <div class="text-[10px] uppercase tracking-wider opacity-80 font-bold">${labels[idx]}</div>
+              <div class="text-sm sm:text-base font-black mt-0.5">
+                ${val ? `${val.toUpperCase()} ${!st.isSolved ? '✕' : '✓'}` : 'Натисніть елемент вище, щоб поставити сюди'}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        ${st.errorMsg ? `
+          <div class="mb-4 p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-800 text-sm font-bold">
+            ⚠️ ${st.errorMsg}
+          </div>
+        ` : ''}
+
+        ${!st.isSolved ? `
+          <div class="flex justify-end">
+            <button onclick="checkPyramidOrder(${block.id}, '${task.id}')"
+              ${st.slots.includes(null) ? 'disabled' : ''}
+              class="btn-3d btn-3d-indigo px-6 py-3 rounded-xl font-extrabold text-sm disabled:opacity-40">
+              Перевірити піраміду ⚖️
+            </button>
+          </div>
+        ` : `
+          <div class="p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-300">
+            <div class="text-sm font-black text-emerald-900 mb-1">✅ Правильний порядок: НОРМА ПРАВА → ІНСТИТУТ ПРАВА → ГАЛУЗЬ ПРАВА → СИСТЕМА ПРАВА.</div>
+            <div class="text-xs sm:text-sm text-emerald-800 mb-4">${task.explanation}</div>
+            <button onclick="completeCurrentTask()" class="btn-3d btn-3d-teal px-6 py-3 rounded-xl font-extrabold text-sm">
+              Перейти до Завдання 3 ➡️
+            </button>
+          </div>
+        `}
+      `;
+    }
+
+    function placePyramidItem(taskId, item) {
+      SoundFX.play('click');
+      const st = GameState.taskLocalState[taskId];
+      const emptyIdx = st.slots.indexOf(null);
+      if (emptyIdx === -1) return;
+      st.slots[emptyIdx] = item;
+      st.pool = st.pool.filter(x => x !== item);
+      st.errorMsg = '';
+      render();
+    }
+
+    function removePyramidItem(taskId, slotIdx) {
+      SoundFX.play('click');
+      const st = GameState.taskLocalState[taskId];
+      const val = st.slots[slotIdx];
+      if (!val) return;
+      st.pool.push(val);
+      st.slots[slotIdx] = null;
+      st.errorMsg = '';
+      render();
+    }
+
+    function checkPyramidOrder(blockId, taskId) {
+      const task = GAME_BLOCKS.find(b => b.id === blockId).tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      const userUpper = st.slots.map(s => s.toUpperCase());
+      const isCorrect = JSON.stringify(userUpper) === JSON.stringify(task.correctOrder);
+
+      if (isCorrect) {
+        st.isSolved = true;
+        st.errorMsg = '';
+        recordAnswer(true, blockId);
+      } else {
+        st.errorMsg = 'Порядок ще не точний. Пригадайте: від найменшої цеглинки права до цілісної системи.';
+        recordAnswer(false, blockId);
+      }
+      render();
+    }
+
+    /* ============================================================================
+       МЕХАНІКА 3 (Завдання 3): ДВОКРОКОВА ПЕРЕВЕРТНА КАРТКА
+       ============================================================================ */
+    function renderTwoStepFlipTask(workspace, block, task) {
+      if (!GameState.taskLocalState[task.id]) {
+        GameState.taskLocalState[task.id] = {
+          cardIdx: 0,
+          step: 1,
+          step1Selected: null,
+          step1Correct: false,
+          step2Selected: null,
+          step2Correct: false
+        };
+      }
+      const st = GameState.taskLocalState[task.id];
+      const card = task.cards[st.cardIdx];
+
+      workspace.innerHTML = `
+        <div class="mb-5">
+          <div class="inline-block px-3 py-1 rounded-lg bg-teal-100 text-teal-800 text-xs font-extrabold mb-2">МЕХАНІКА: ДВОКРОКОВА 3D-КАРТКА</div>
+          <h3 class="text-xl sm:text-2xl font-black text-indigo-950">${task.title}</h3>
+          <p class="text-sm text-slate-600 mt-1">${task.instruction}</p>
+        </div>
+
+        <div class="flex items-center gap-2 mb-5">
+          ${task.cards.map((c, idx) => `
+            <div class="flex-1 h-2.5 rounded-full ${idx < st.cardIdx ? 'bg-emerald-500' : idx === st.cardIdx ? 'bg-indigo-600' : 'bg-slate-200'}"></div>
+          `).join('')}
+          <span class="text-xs font-extrabold text-indigo-900 ml-2">Картка ${st.cardIdx + 1} із ${task.cards.length}</span>
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-indigo-900 to-indigo-950 text-white shadow-lg mb-6 border-2 border-indigo-700">
+          <div class="flex items-center justify-between mb-2">
+            <span class="px-2.5 py-0.5 rounded-md bg-amber-400 text-indigo-950 text-xs font-black">${card.label}</span>
+            <span class="text-xs font-bold text-indigo-300">Крок ${st.step} з 2</span>
+          </div>
+          <p class="text-sm sm:text-base font-medium leading-relaxed whitespace-pre-line">${card.normText}</p>
+        </div>
+
+        ${st.step === 1 ? `
+          <div class="pop-in-3d">
+            <h4 class="text-base font-extrabold text-indigo-950 mb-3">${card.step1.question}</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+              ${card.step1.options.map((opt, idx) => {
+                const isSelected = st.step1Selected === idx;
+                const isRight = idx === card.step1.correctIndex;
+                let cls = 'btn-3d btn-3d-white text-left p-4 rounded-2xl font-bold text-sm';
+                if (st.step1Selected !== null) {
+                  if (isRight) cls = 'p-4 rounded-2xl font-extrabold text-sm bg-emerald-100 border-2 border-emerald-500 text-emerald-950';
+                  else if (isSelected) cls = 'p-4 rounded-2xl font-bold text-sm bg-rose-100 border-2 border-rose-500 text-rose-950';
+                }
+                return `
+                  <button onclick="answerFlipStep1(${block.id}, '${task.id}', ${idx})" ${st.step1Correct ? 'disabled' : ''} class="${cls}">
+                    ${opt}
+                  </button>
+                `;
+              }).join('')}
+            </div>
+
+            ${st.step1Selected !== null && !st.step1Correct ? `
+              <div class="p-3 rounded-xl bg-rose-50 border border-rose-300 text-rose-800 text-xs sm:text-sm font-bold mb-3">
+                ❌ Неправильно. Спробуйте обрати іншу галузь права!
+              </div>
+            ` : ''}
+
+            ${st.step1Correct ? `
+              <div class="p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-300 flex flex-wrap items-center justify-between gap-3">
+                <div class="text-xs sm:text-sm font-bold text-emerald-900">✅ Правильно! ${card.step1.explanation}</div>
+                <button onclick="goToFlipStep2('${task.id}')" class="btn-3d btn-3d-indigo px-5 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm">
+                  Перейти до Кроку 2 🔄
+                </button>
+              </div>
+            ` : ''}
+          </div>
+        ` : `
+          <div class="pop-in-3d">
+            <div class="mb-3 px-3 py-2 rounded-xl bg-indigo-50 border border-indigo-200 text-xs font-bold text-indigo-800">
+              Обрана галузь: <span class="font-black">${card.step1.options[card.step1.correctIndex]}</span> (${card.step1.explanation})
+            </div>
+            <h4 class="text-base font-extrabold text-indigo-950 mb-3">${card.step2.question}</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+              ${card.step2.options.map((opt, idx) => {
+                const isSelected = st.step2Selected === idx;
+                const isRight = idx === card.step2.correctIndex;
+                let cls = 'btn-3d btn-3d-white text-left p-4 rounded-2xl font-extrabold text-sm';
+                if (st.step2Selected !== null) {
+                  if (isRight) cls = 'p-4 rounded-2xl font-extrabold text-sm bg-emerald-100 border-2 border-emerald-500 text-emerald-950';
+                  else if (isSelected) cls = 'p-4 rounded-2xl font-bold text-sm bg-rose-100 border-2 border-rose-500 text-rose-950';
+                }
+                return `
+                  <button onclick="answerFlipStep2(${block.id}, '${task.id}', ${idx})" ${st.step2Correct ? 'disabled' : ''} class="${cls}">
+                    ${opt}
+                  </button>
+                `;
+              }).join('')}
+            </div>
+
+            ${st.step2Selected !== null && !st.step2Correct ? `
+              <div class="p-3 rounded-xl bg-rose-50 border border-rose-300 text-rose-800 text-xs sm:text-sm font-bold mb-3">
+                ❌ Подумайте ще: чи регулює ця галузь відносини юридично рівних суб'єктів, чи владно-державні відносини?
+              </div>
+            ` : ''}
+
+            ${st.step2Correct ? `
+              <div class="p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-300">
+                <div class="text-xs sm:text-sm font-bold text-emerald-900 mb-3">✅ Правильно! ${card.step2.explanation}</div>
+                <button onclick="nextFlipCard('${task.id}')" class="btn-3d btn-3d-teal px-6 py-3 rounded-xl font-extrabold text-sm">
+                  ${st.cardIdx + 1 < task.cards.length ? 'Наступна картка ➡️' : 'Завершити Блок 1 та отримати звання 🏆'}
+                </button>
+              </div>
+            ` : ''}
+          </div>
+        `}
+      `;
+    }
+
+    function answerFlipStep1(blockId, taskId, idx) {
+      const task = GAME_BLOCKS.find(b => b.id === blockId).tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      const card = task.cards[st.cardIdx];
+      st.step1Selected = idx;
+      if (idx === card.step1.correctIndex) {
+        st.step1Correct = true;
+        recordAnswer(true, blockId);
+      } else {
+        recordAnswer(false, blockId);
+      }
+      render();
+    }
+
+    function goToFlipStep2(taskId) {
+      SoundFX.play('click');
+      const st = GameState.taskLocalState[taskId];
+      st.step = 2;
+      GameState.questionStartTime = Date.now();
+      render();
+    }
+
+    function answerFlipStep2(blockId, taskId, idx) {
+      const task = GAME_BLOCKS.find(b => b.id === blockId).tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      const card = task.cards[st.cardIdx];
+      st.step2Selected = idx;
+      if (idx === card.step2.correctIndex) {
+        st.step2Correct = true;
+        recordAnswer(true, blockId);
+      } else {
+        recordAnswer(false, blockId);
+      }
+      render();
+    }
+
+    function nextFlipCard(taskId) {
+      const task = GAME_BLOCKS[GameState.currentBlockIdx].tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      if (st.cardIdx + 1 < task.cards.length) {
+        st.cardIdx++;
+        st.step = 1;
+        st.step1Selected = null;
+        st.step1Correct = false;
+        st.step2Selected = null;
+        st.step2Correct = false;
+        GameState.questionStartTime = Date.now();
+        render();
+      } else {
+        completeCurrentTask();
+      }
+    }
+
+    /* ============================================================================
+       МЕХАНІКА 4 (Завдання 5): СКАНЕР-ПЕЧАТКА ДЖЕРЕЛА ПРАВА
+       ============================================================================ */
+    function renderStampScannerTask(workspace, block, task) {
+      if (!GameState.taskLocalState[task.id]) {
+        GameState.taskLocalState[task.id] = {
+          caseIdx: 0,
+          selectedIdx: null,
+          isCorrect: false
+        };
+      }
+      const st = GameState.taskLocalState[task.id];
+      const item = task.cases[st.caseIdx];
+
+      workspace.innerHTML = `
+        <div class="mb-5">
+          <div class="inline-block px-3 py-1 rounded-lg bg-teal-100 text-teal-800 text-xs font-extrabold mb-2">МЕХАНІКА: АРХІВНА ПЕЧАТКА ДЖЕРЕЛА</div>
+          <h3 class="text-xl sm:text-2xl font-black text-indigo-950">${task.title}</h3>
+          <p class="text-sm text-slate-600 mt-1">${task.instruction}</p>
+        </div>
+
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-teal-700">Фрагмент ${item.num} із ${task.cases.length}</span>
+          <div class="flex gap-1.5">
+            ${task.cases.map((_, idx) => `
+              <span class="w-6 h-2 rounded-full ${idx < st.caseIdx ? 'bg-emerald-500' : idx === st.caseIdx ? 'bg-teal-600' : 'bg-slate-200'}"></span>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="relative p-5 sm:p-7 rounded-2xl bg-amber-50/70 border-2 border-amber-200 shadow-inner mb-6">
+          <p class="text-sm sm:text-base font-medium text-slate-900 leading-relaxed">${item.text}</p>
+          ${st.isCorrect ? `
+            <div class="stamp-anim mt-4 sm:mt-0 sm:absolute sm:top-4 sm:right-4 inline-block border-4 border-emerald-600 text-emerald-700 px-3 py-1 rounded-xl font-black text-xs uppercase tracking-widest bg-white/90 shadow-md">
+              ЗАСВІДЧЕНО: ${item.options[item.correctIndex].slice(3)}
+            </div>
+          ` : ''}
+        </div>
+
+        <h4 class="text-base font-extrabold text-indigo-950 mb-3">${item.question}</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+          ${item.options.map((opt, idx) => {
+            const isSelected = st.selectedIdx === idx;
+            const isRight = idx === item.correctIndex;
+            let cls = 'btn-3d btn-3d-white text-left p-4 rounded-2xl font-bold text-sm';
+            if (st.selectedIdx !== null) {
+              if (isRight) cls = 'p-4 rounded-2xl font-extrabold text-sm bg-emerald-100 border-2 border-emerald-500 text-emerald-950';
+              else if (isSelected) cls = 'p-4 rounded-2xl font-bold text-sm bg-rose-100 border-2 border-rose-500 text-rose-950';
+            }
+            return `
+              <button onclick="selectStampOption(${block.id}, '${task.id}', ${idx})" ${st.isCorrect ? 'disabled' : ''} class="${cls}">
+                ${opt}
+              </button>
+            `;
+          }).join('')}
+        </div>
+
+        ${st.selectedIdx !== null && !st.isCorrect ? `
+          <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-800 text-xs sm:text-sm font-bold mb-4">
+            ❌ Це інше джерело права. Уважно прочитайте початок та зміст фрагмента!
+          </div>
+        ` : ''}
+
+        ${st.isCorrect ? `
+          <div class="p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-300 pop-in-3d">
+            <div class="text-xs sm:text-sm font-bold text-emerald-950 mb-3">✅ ${item.explanation}</div>
+            <button onclick="nextStampCase('${task.id}')" class="btn-3d btn-3d-teal px-6 py-3 rounded-xl font-extrabold text-sm">
+              ${st.caseIdx + 1 < task.cases.length ? 'Наступний фрагмент ➡️' : 'Завершити Блок 2 та отримати звання 🏆'}
+            </button>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    function selectStampOption(blockId, taskId, idx) {
+      const task = GAME_BLOCKS.find(b => b.id === blockId).tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      const item = task.cases[st.caseIdx];
+      st.selectedIdx = idx;
+      if (idx === item.correctIndex) {
+        st.isCorrect = true;
+        recordAnswer(true, blockId);
+      } else {
+        recordAnswer(false, blockId);
+      }
+      render();
+    }
+
+    function nextStampCase(taskId) {
+      const task = GAME_BLOCKS[GameState.currentBlockIdx].tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      if (st.caseIdx + 1 < task.cases.length) {
+        st.caseIdx++;
+        st.selectedIdx = null;
+        st.isCorrect = false;
+        GameState.questionStartTime = Date.now();
+        render();
+      } else {
+        completeCurrentTask();
+      }
+    }
+
+    /* ============================================================================
+       МЕХАНІКА 5 (Завдання 6): ЛАБОРАТОРІЯ КЛАСИФІКАЦІЇ З ЛІНІЯМИ (А, Б, В, Г, Д)
+       ============================================================================ */
+    function renderClassificationLabTask(workspace, block, task) {
+      if (!GameState.taskLocalState[task.id]) {
+        GameState.taskLocalState[task.id] = {
+          subIdx: 0,
+          selectedLeft: null,
+          matchedIds: [],
+          wrongPair: null,
+          shuffledDefs: shuffleArray(task.subblocks[0].step1Pairs.map(p => ({ id: p.id, text: p.right }))),
+          itemAnswers: {}
+        };
+      }
+      const st = GameState.taskLocalState[task.id];
+      const sub = task.subblocks[st.subIdx];
+      const step1Complete = st.matchedIds.length === sub.step1Pairs.length;
+      const allItemsSolved = sub.step2Items.every((_, i) => st.itemAnswers[i] && st.itemAnswers[i].isCorrect);
+
+      workspace.innerHTML = `
+        <div class="mb-5">
+          <div class="inline-block px-3 py-1 rounded-lg bg-amber-100 text-amber-900 text-xs font-extrabold mb-2">МЕХАНІКА: ЛАБОРАТОРІЯ КЛАСИФІКАЦІЇ З ЛІНІЯМИ (5 КРИТЕРІЇВ)</div>
+          <h3 class="text-xl sm:text-2xl font-black text-indigo-950">${task.title}</h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">${task.instruction}</p>
+
+          <div class="flex flex-wrap gap-2 mt-4">
+            ${task.subblocks.map((s, idx) => `
+              <div class="px-3 py-1.5 rounded-xl text-xs font-extrabold border-2 ${idx === st.subIdx ? 'bg-indigo-600 text-white border-indigo-800' : idx < st.subIdx ? 'bg-emerald-100 text-emerald-900 border-emerald-400' : 'bg-slate-100 text-slate-500 border-slate-200'}">
+                Підблок ${s.code} ${idx < st.subIdx ? '✅' : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-indigo-950 text-white font-extrabold text-sm sm:text-base mb-5">
+          ${sub.name}
+        </div>
+
+        <!-- КРОК 1: Встанови відповідність між видом і визначенням лініями -->
+        <div class="mb-6 p-4 sm:p-5 rounded-2xl bg-indigo-50/60 border-2 border-indigo-200">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-extrabold text-indigo-950 text-sm">Крок 1. З’єднай лініями вид норми та його визначення:</h4>
+            ${step1Complete ? '<span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-lg">✅ Виконано</span>' : ''}
+          </div>
+
+          <div class="relative" id="lab-connect-arena">
+            <svg class="absolute inset-0 w-full h-full pointer-events-none z-10 hidden md:block">
+              <g id="lab-connect-paths-${task.id}"></g>
+            </svg>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-12 relative z-20">
+              <div class="md:col-span-4 space-y-2.5">
+                ${sub.step1Pairs.map(p => {
+                  const matched = st.matchedIds.includes(p.id);
+                  const selected = st.selectedLeft === p.id;
+                  const isWrong = st.wrongPair && st.wrongPair.left === p.id;
+                  return `
+                    <button
+                      id="lab-left-${p.id}"
+                      onclick="labSelectLeft('${task.id}', '${p.id}')"
+                      ${matched ? 'disabled' : ''}
+                      class="w-full text-left p-3.5 rounded-xl border-2 font-extrabold text-xs sm:text-sm transition-all flex items-center justify-between gap-2
+                        ${matched ? 'bg-emerald-50 border-emerald-400 text-emerald-950' :
+                          isWrong ? 'bg-rose-50 border-rose-500 text-rose-950' :
+                          selected ? 'bg-indigo-600 text-white border-indigo-800 shadow-md scale-[1.02]' :
+                          'bg-white hover:border-indigo-400 text-indigo-950 border-slate-200'}">
+                      <span>${p.left}</span>
+                      <span class="w-4 h-4 rounded-full border-2 shrink-0 flex items-center justify-center text-[10px] ${matched ? 'bg-emerald-500 border-emerald-600 text-white' : selected ? 'bg-amber-400 border-white' : 'bg-indigo-100 border-indigo-400'}">
+                        ${matched ? '✓' : ''}
+                      </span>
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+
+              <div class="md:col-span-8 space-y-2.5">
+                ${st.shuffledDefs.map(d => {
+                  const matched = st.matchedIds.includes(d.id);
+                  const isWrong = st.wrongPair && st.wrongPair.right === d.id;
+                  return `
+                    <button
+                      id="lab-right-${d.id}"
+                      onclick="labSelectRight(${block.id}, '${task.id}', '${d.id}')"
+                      ${matched ? 'disabled' : ''}
+                      class="w-full text-left p-3.5 rounded-xl border-2 text-xs sm:text-sm font-medium leading-snug transition-all flex items-center gap-2.5
+                        ${matched ? 'bg-emerald-50 border-emerald-400 text-emerald-950' :
+                          isWrong ? 'bg-rose-50 border-rose-500 text-rose-950' :
+                          st.selectedLeft ? 'bg-white hover:bg-teal-50 hover:border-teal-500 border-indigo-200 text-slate-800 cursor-pointer' :
+                          'bg-white border-slate-200 text-slate-800'}">
+                      <span class="w-4 h-4 rounded-full border-2 shrink-0 ${matched ? 'bg-emerald-500 border-emerald-600' : 'bg-teal-100 border-teal-500'}"></span>
+                      <span>${d.text}</span>
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- КРОК 2: Для кожної норми обери її вид за цією класифікацією -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-white border-2 border-slate-200 ${!step1Complete ? 'opacity-50 pointer-events-none' : ''}">
+          <h4 class="font-extrabold text-indigo-950 text-sm mb-3">
+            Крок 2. Для кожної норми обери її вид за цією класифікацією:
+            ${!step1Complete ? '<span class="text-xs font-normal text-slate-500">(Спочатку завершіть Крок 1)</span>' : ''}
+          </h4>
+
+          <div class="space-y-4">
+            ${sub.step2Items.map((normItem, nIdx) => {
+              const ans = st.itemAnswers[nIdx] || { selected: null, isCorrect: false };
+              return `
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                  <p class="text-xs sm:text-sm font-semibold text-slate-900 mb-3">${normItem.text}</p>
+                  <div class="flex flex-wrap gap-2">
+                    ${normItem.options.map((opt, oIdx) => {
+                      const isSel = ans.selected === oIdx;
+                      const isRight = oIdx === normItem.correctIndex;
+                      let btnCls = 'btn-3d btn-3d-white px-3.5 py-2 rounded-xl text-xs font-extrabold';
+                      if (ans.selected !== null) {
+                        if (isRight) btnCls = 'px-3.5 py-2 rounded-xl text-xs font-extrabold bg-emerald-500 text-white border-2 border-emerald-700';
+                        else if (isSel) btnCls = 'px-3.5 py-2 rounded-xl text-xs font-extrabold bg-rose-100 text-rose-900 border-2 border-rose-400';
+                      }
+                      return `
+                        <button onclick="labAnswerNorm(${block.id}, '${task.id}', ${nIdx}, ${oIdx})" ${ans.isCorrect ? 'disabled' : ''} class="${btnCls}">
+                          ${opt}
+                        </button>
+                      `;
+                    }).join('')}
+                  </div>
+                  ${ans.isCorrect ? `
+                    <div class="mt-2.5 text-xs font-bold text-emerald-800 bg-emerald-50 p-2.5 rounded-lg border border-emerald-200">
+                      ✅ ${normItem.explanation}
+                    </div>
+                  ` : ans.selected !== null ? `
+                    <div class="mt-2 text-xs font-bold text-rose-700">❌ Спробуйте інший варіант!</div>
+                  ` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+
+        ${step1Complete && allItemsSolved ? `
+          <div class="mt-6 flex justify-end">
+            <button onclick="nextLabSubblock('${task.id}')" class="btn-3d btn-3d-indigo px-6 py-3 rounded-xl font-extrabold text-sm">
+              ${st.subIdx + 1 < task.subblocks.length ? `Перейти до підблоку ${task.subblocks[st.subIdx + 1].code} ➡️` : 'Перейти до Завдання 7 (Комплексна класифікація) ➡️'}
+            </button>
+          </div>
+        ` : ''}
+      `;
+
+      setTimeout(() => drawLabConnectLines(task.id), 30);
+    }
+
+    function drawLabConnectLines(taskId) {
+      const st = GameState.taskLocalState[taskId];
+      const pathsGroup = document.getElementById(`lab-connect-paths-${taskId}`);
+      const arena = document.getElementById('lab-connect-arena');
+      if (!pathsGroup || !arena || !st) return;
+
+      const arenaRect = arena.getBoundingClientRect();
+      pathsGroup.innerHTML = st.matchedIds.map(id => {
+        const leftEl = document.getElementById(`lab-left-${id}`);
+        const rightEl = document.getElementById(`lab-right-${id}`);
+        if (!leftEl || !rightEl) return '';
+        const lRect = leftEl.getBoundingClientRect();
+        const rRect = rightEl.getBoundingClientRect();
+        const x1 = lRect.right - arenaRect.left;
+        const y1 = lRect.top + lRect.height / 2 - arenaRect.top;
+        const x2 = rRect.left - arenaRect.left;
+        const y2 = rRect.top + rRect.height / 2 - arenaRect.top;
+        const cx1 = x1 + (x2 - x1) * 0.45;
+        const cx2 = x2 - (x2 - x1) * 0.45;
+        return `
+          <path d="M ${x1} ${y1} C ${cx1} ${y1}, ${cx2} ${y2}, ${x2} ${y2}" stroke="#10b981" stroke-width="3.5" fill="none" stroke-linecap="round" />
+          <circle cx="${x1}" cy="${y1}" r="4.5" fill="#10b981" />
+          <circle cx="${x2}" cy="${y2}" r="4.5" fill="#10b981" />
+        `;
+      }).join('');
+    }
+
+    function labSelectLeft(taskId, leftId) {
+      SoundFX.play('click');
+      const st = GameState.taskLocalState[taskId];
+      st.selectedLeft = leftId;
+      st.wrongPair = null;
+      render();
+    }
+
+    function labSelectRight(blockId, taskId, rightId) {
+      const st = GameState.taskLocalState[taskId];
+      if (!st.selectedLeft) return;
+      if (st.selectedLeft === rightId) {
+        st.matchedIds.push(rightId);
+        st.selectedLeft = null;
+        st.wrongPair = null;
+        recordAnswer(true, blockId);
+        render();
+      } else {
+        st.wrongPair = { left: st.selectedLeft, right: rightId };
+        recordAnswer(false, blockId);
+        render();
+        setTimeout(() => {
+          if (GameState.taskLocalState[taskId]) {
+            GameState.taskLocalState[taskId].wrongPair = null;
+            render();
+          }
+        }, 700);
+      }
+    }
+
+    function labAnswerNorm(blockId, taskId, nIdx, oIdx) {
+      const task = GAME_BLOCKS.find(b => b.id === blockId).tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      const normItem = task.subblocks[st.subIdx].step2Items[nIdx];
+      const isCorrect = oIdx === normItem.correctIndex;
+      st.itemAnswers[nIdx] = { selected: oIdx, isCorrect };
+      recordAnswer(isCorrect, blockId);
+      render();
+    }
+
+    function nextLabSubblock(taskId) {
+      const task = GAME_BLOCKS[GameState.currentBlockIdx].tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      if (st.subIdx + 1 < task.subblocks.length) {
+        st.subIdx++;
+        st.selectedLeft = null;
+        st.matchedIds = [];
+        st.wrongPair = null;
+        st.shuffledDefs = shuffleArray(task.subblocks[st.subIdx].step1Pairs.map(p => ({ id: p.id, text: p.right })));
+        st.itemAnswers = {};
+        GameState.questionStartTime = Date.now();
+        render();
+      } else {
+        completeCurrentTask();
+      }
+    }
+
+    /* ============================================================================
+       МЕХАНІКА 6 (Завдання 7): КОМБІНАТОРНИЙ ДЕКОДЕР НОРМ
+       ============================================================================ */
+    function renderComboDecoderTask(workspace, block, task) {
+      if (!GameState.taskLocalState[task.id]) {
+        GameState.taskLocalState[task.id] = {
+          qIdx: 0,
+          selectedIdx: null,
+          isCorrect: false
+        };
+      }
+      const st = GameState.taskLocalState[task.id];
+      const q = task.questions[st.qIdx];
+
+      workspace.innerHTML = `
+        <div class="mb-5">
+          <div class="inline-block px-3 py-1 rounded-lg bg-indigo-100 text-indigo-800 text-xs font-extrabold mb-2">МЕХАНІКА: КОМБІНАТОРНИЙ ДЕКОДЕР</div>
+          <h3 class="text-xl sm:text-2xl font-black text-indigo-950">${task.title}</h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">${task.instruction}</p>
+        </div>
+
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-extrabold text-indigo-700">Норма ${q.num} із ${task.questions.length}</span>
+          <div class="flex gap-1.5">
+            ${task.questions.map((_, i) => `
+              <span class="w-5 h-2 rounded-full ${i < st.qIdx ? 'bg-emerald-500' : i === st.qIdx ? 'bg-indigo-600' : 'bg-slate-200'}"></span>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-indigo-950 text-white text-sm sm:text-base font-medium leading-relaxed mb-5 shadow-md">
+          ${q.norm}
+        </div>
+
+        <div class="space-y-3 mb-5">
+          ${q.options.map((opt, idx) => {
+            const isSel = st.selectedIdx === idx;
+            const isRight = idx === q.correctIndex;
+            let cls = 'btn-3d btn-3d-white w-full text-left p-4 rounded-2xl font-bold text-xs sm:text-sm';
+            if (st.selectedIdx !== null) {
+              if (isRight) cls = 'w-full text-left p-4 rounded-2xl font-extrabold text-xs sm:text-sm bg-emerald-50 border-2 border-emerald-500 text-emerald-950';
+              else if (isSel) cls = 'w-full text-left p-4 rounded-2xl font-bold text-xs sm:text-sm bg-rose-50 border-2 border-rose-500 text-rose-950';
+            }
+            return `
+              <div>
+                <button onclick="selectComboOption(${block.id}, '${task.id}', ${idx})" ${st.isCorrect ? 'disabled' : ''} class="${cls}">
+                  ${opt.label}
+                </button>
+                ${(isSel || (st.isCorrect && isRight)) ? `
+                  <div class="mt-1.5 ml-3 pl-3 border-l-4 ${isRight ? 'border-emerald-500 text-emerald-800' : 'border-rose-400 text-rose-800'} text-xs font-semibold">
+                    ${opt.explanation}
+                  </div>
+                ` : ''}
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        ${st.isCorrect ? `
+          <div class="flex justify-end">
+            <button onclick="nextComboQuestion('${task.id}')" class="btn-3d btn-3d-teal px-6 py-3 rounded-xl font-extrabold text-sm">
+              ${st.qIdx + 1 < task.questions.length ? 'Наступна норма ➡️' : 'Завершити Блок 3 та отримати звання 🏆'}
+            </button>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    function selectComboOption(blockId, taskId, idx) {
+      const task = GAME_BLOCKS.find(b => b.id === blockId).tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      const q = task.questions[st.qIdx];
+      st.selectedIdx = idx;
+      if (idx === q.correctIndex) {
+        st.isCorrect = true;
+        recordAnswer(true, blockId);
+      } else {
+        recordAnswer(false, blockId);
+      }
+      render();
+    }
+
+    function nextComboQuestion(taskId) {
+      const task = GAME_BLOCKS[GameState.currentBlockIdx].tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      if (st.qIdx + 1 < task.questions.length) {
+        st.qIdx++;
+        st.selectedIdx = null;
+        st.isCorrect = false;
+        GameState.questionStartTime = Date.now();
+        render();
+      } else {
+        completeCurrentTask();
+      }
+    }
+
+    /* ============================================================================
+       МЕХАНІКА 7 (Завдання 9): РЕНТГЕН СТРУКТУРИ НОРМИ (З ВИДІЛЕНИМ ЗАВДАННЯМ І ДЖЕРЕЛОМ)
+       ============================================================================ */
+    function renderXrayNormTask(workspace, block, task) {
+      if (!GameState.taskLocalState[task.id]) {
+        GameState.taskLocalState[task.id] = {
+          idx: 0,
+          selectedIdx: null,
+          isCorrect: false
+        };
+      }
+      const st = GameState.taskLocalState[task.id];
+      const item = task.items[st.idx];
+
+      workspace.innerHTML = `
+        <div class="mb-5">
+          <div class="inline-block px-3 py-1 rounded-lg bg-amber-100 text-amber-900 text-xs font-extrabold mb-2">МЕХАНІКА: РЕНТГЕН СТРУКТУРИ НОРМИ</div>
+          <h3 class="text-xl sm:text-2xl font-black text-indigo-950">${task.title}</h3>
+          <p class="text-sm text-slate-600 mt-1">${task.instruction}</p>
+        </div>
+
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-extrabold text-amber-800">Приклад ${item.num} із ${task.items.length}</span>
+          <div class="flex gap-1.5">
+            ${task.items.map((_, i) => `
+              <span class="w-6 h-2 rounded-full ${i < st.idx ? 'bg-emerald-500' : i === st.idx ? 'bg-amber-500' : 'bg-slate-200'}"></span>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Картка з виділеним завданням у шапці та дрібним кольоровим джерелом -->
+        <div class="rounded-2xl border-2 border-indigo-200 bg-white shadow-md overflow-hidden mb-6">
+          <div class="bg-gradient-to-r from-indigo-600 to-teal-600 px-5 py-3 flex flex-wrap items-center justify-between gap-2">
+            <span class="text-white font-black text-sm sm:text-base tracking-wide">
+              🎯 Завдання: ${item.question}
+            </span>
+            <span class="px-2.5 py-0.5 rounded-md bg-white/15 text-amber-200 text-[11px] font-semibold border border-amber-300/30">
+              Джерело: ${item.source}
+            </span>
+          </div>
+
+          <div class="p-5 sm:p-7 bg-white text-slate-900 text-sm sm:text-base font-medium leading-relaxed">
+            <span>${item.prefix}</span><span class="xray-highlight">${item.highlighted}</span><span>${item.suffix}</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+          ${item.options.map((opt, idx) => {
+            const isSel = st.selectedIdx === idx;
+            const isRight = idx === item.correctIndex;
+            let cls = 'btn-3d btn-3d-white p-4 rounded-2xl font-extrabold text-sm text-center';
+            if (st.selectedIdx !== null) {
+              if (isRight) cls = 'p-4 rounded-2xl font-extrabold text-sm text-center bg-emerald-100 border-2 border-emerald-500 text-emerald-950';
+              else if (isSel) cls = 'p-4 rounded-2xl font-bold text-sm text-center bg-rose-100 border-2 border-rose-500 text-rose-950';
+            }
+            return `
+              <button onclick="selectXrayOption(${block.id}, '${task.id}', ${idx})" ${st.isCorrect ? 'disabled' : ''} class="${cls}">
+                ${opt}
+              </button>
+            `;
+          }).join('')}
+        </div>
+
+        ${st.selectedIdx !== null && !st.isCorrect ? `
+          <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-800 text-xs sm:text-sm font-bold mb-4">
+            ❌ Неправильно. Запитайте себе: виділений фрагмент описує умову (коли діє?), саме правило поведінки (що робити?) чи наслідок порушення (яке покарання?)?
+          </div>
+        ` : ''}
+
+        ${st.isCorrect ? `
+          <div class="p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-300 pop-in-3d">
+            <div class="text-sm font-black text-emerald-800 mb-1">✅ Правильна відповідь: ${item.answerLabel}</div>
+            <div class="text-xs sm:text-sm font-medium text-emerald-950 mb-3">${item.explanation}</div>
+            <button onclick="nextXrayItem('${task.id}')" class="btn-3d btn-3d-indigo px-6 py-3 rounded-xl font-extrabold text-sm">
+              ${st.idx + 1 < task.items.length ? 'Наступний фрагмент ➡️' : 'Перейти до Завдання 10 ➡️'}
+            </button>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    function selectXrayOption(blockId, taskId, idx) {
+      const task = GAME_BLOCKS.find(b => b.id === blockId).tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      const item = task.items[st.idx];
+      st.selectedIdx = idx;
+      if (idx === item.correctIndex) {
+        st.isCorrect = true;
+        recordAnswer(true, blockId);
+      } else {
+        recordAnswer(false, blockId);
+      }
+      render();
+    }
+
+    function nextXrayItem(taskId) {
+      const task = GAME_BLOCKS[GameState.currentBlockIdx].tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      if (st.idx + 1 < task.items.length) {
+        st.idx++;
+        st.selectedIdx = null;
+        st.isCorrect = false;
+        GameState.questionStartTime = Date.now();
+        render();
+      } else {
+        completeCurrentTask();
+      }
+    }
+
+    /* ============================================================================
+       МЕХАНІКА 8 (Завдання 10): АНАЛІТИЧНЕ ДОСЬЄ ЗІ СТРУКТУРОВАНИМ ДОВІДНИКОМ
+       ============================================================================ */
+    function renderDossierAnalyzerTask(workspace, block, task) {
+      if (!GameState.taskLocalState[task.id]) {
+        GameState.taskLocalState[task.id] = {
+          idx: 0,
+          showRef: true,
+          selectedIdx: null,
+          isCorrect: false
+        };
+      }
+      const st = GameState.taskLocalState[task.id];
+      const item = task.items[st.idx];
+
+      workspace.innerHTML = `
+        <div class="mb-5">
+          <div class="inline-block px-3 py-1 rounded-lg bg-indigo-100 text-indigo-800 text-xs font-extrabold mb-2">МЕХАНІКА: АНАЛІТИЧНЕ ДОСЬЄ З ДОВІДНИКОМ</div>
+          <h3 class="text-xl sm:text-2xl font-black text-indigo-950">${task.title}</h3>
+          <p class="text-sm text-slate-600 mt-1">${task.instruction}</p>
+        </div>
+
+        <!-- Інтерактивна інформаційна картка з чіткими списками типів -->
+        <div class="mb-6 rounded-2xl border-2 border-indigo-200 bg-indigo-50/60 overflow-hidden">
+          <button onclick="toggleDossierRef('${task.id}')" class="w-full px-4 py-3 flex items-center justify-between text-left font-extrabold text-xs sm:text-sm text-indigo-950 bg-indigo-100/80 hover:bg-indigo-100">
+            <span class="flex items-center gap-2"><span>📖</span> Інформаційна картка: класифікація елементів норми права</span>
+            <span>${st.showRef ? '▲ Згорнути' : '▼ Розгорнути'}</span>
+          </button>
+          ${st.showRef ? `
+            <div class="p-4 sm:p-5 grid grid-cols-1 lg:grid-cols-3 gap-3.5">
+              ${task.referenceSections.map(sec => {
+                const borderCls = sec.color === 'indigo' ? 'border-indigo-300 bg-white' : sec.color === 'teal' ? 'border-teal-300 bg-white' : 'border-amber-300 bg-white';
+                const headerCls = sec.color === 'indigo' ? 'bg-indigo-600 text-white' : sec.color === 'teal' ? 'bg-teal-600 text-white' : 'bg-amber-500 text-indigo-950';
+                return `
+                  <div class="rounded-xl border-2 ${borderCls} overflow-hidden shadow-sm flex flex-col">
+                    <div class="px-3.5 py-2 font-extrabold text-xs ${headerCls}">
+                      ${sec.title}
+                    </div>
+                    <ul class="p-3.5 space-y-2 text-xs text-slate-700 leading-relaxed list-disc pl-6">
+                      ${sec.items.map(li => `
+                        <li>
+                          <strong class="text-indigo-950">${li.name}</strong> — ${li.desc}
+                        </li>
+                      `).join('')}
+                    </ul>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          ` : ''}
+        </div>
+
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-extrabold text-indigo-700">Завдання ${item.num} із ${task.items.length}</span>
+          <div class="flex gap-1.5">
+            ${task.items.map((_, i) => `
+              <span class="w-6 h-2 rounded-full ${i < st.idx ? 'bg-emerald-500' : i === st.idx ? 'bg-indigo-600' : 'bg-slate-200'}"></span>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Картка завдання: виділене завдання у шапці + дрібне джерело іншим кольором -->
+        <div class="rounded-2xl border-2 border-indigo-200 bg-white shadow-md overflow-hidden mb-5">
+          <div class="bg-gradient-to-r from-indigo-900 to-indigo-700 px-5 py-3 flex flex-wrap items-center justify-between gap-2">
+            <span class="text-white font-black text-sm sm:text-base tracking-wide">
+              🎯 ${item.prompt}
+            </span>
+            <span class="px-2.5 py-0.5 rounded-md bg-amber-400/20 text-amber-200 text-[11px] font-semibold border border-amber-300/40">
+              Джерело: ${item.source}
+            </span>
+          </div>
+
+          <div class="p-5 bg-slate-50">
+            <p class="text-xs sm:text-sm font-medium text-slate-900 leading-relaxed max-h-60 overflow-y-auto pr-1">${item.text}</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+          ${item.options.map((opt, idx) => {
+            const isSel = st.selectedIdx === idx;
+            const isRight = idx === item.correctIndex;
+            let cls = 'btn-3d btn-3d-white p-4 rounded-2xl font-extrabold text-sm text-center';
+            if (st.selectedIdx !== null) {
+              if (isRight) cls = 'p-4 rounded-2xl font-extrabold text-sm text-center bg-emerald-100 border-2 border-emerald-500 text-emerald-950';
+              else if (isSel) cls = 'p-4 rounded-2xl font-bold text-sm text-center bg-rose-100 border-2 border-rose-500 text-rose-950';
+            }
+            return `
+              <button onclick="selectDossierOption(${block.id}, '${task.id}', ${idx})" ${st.isCorrect ? 'disabled' : ''} class="${cls}">
+                ${opt}
+              </button>
+            `;
+          }).join('')}
+        </div>
+
+        ${st.selectedIdx !== null && !st.isCorrect ? `
+          <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-800 text-xs sm:text-sm font-bold mb-4">
+            ❌ Спробуйте ще раз! Звірте формулювання норми з інформаційною карткою вище.
+          </div>
+        ` : ''}
+
+        ${st.isCorrect ? `
+          <div class="p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-300 pop-in-3d">
+            <div class="text-sm font-black text-emerald-800 mb-1">✅ Правильна відповідь: ${item.answerLabel}</div>
+            <div class="text-xs sm:text-sm font-medium text-emerald-950 mb-3">${item.explanation}</div>
+            <button onclick="nextDossierItem('${task.id}')" class="btn-3d btn-3d-teal px-6 py-3 rounded-xl font-extrabold text-sm">
+              ${st.idx + 1 < task.items.length ? 'Наступний приклад ➡️' : 'Завершити Блок 4 та отримати звання 🏆'}
+            </button>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    function toggleDossierRef(taskId) {
+      SoundFX.play('click');
+      GameState.taskLocalState[taskId].showRef = !GameState.taskLocalState[taskId].showRef;
+      render();
+    }
+
+    function selectDossierOption(blockId, taskId, idx) {
+      const task = GAME_BLOCKS.find(b => b.id === blockId).tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      const item = task.items[st.idx];
+      st.selectedIdx = idx;
+      if (idx === item.correctIndex) {
+        st.isCorrect = true;
+        recordAnswer(true, blockId);
+      } else {
+        recordAnswer(false, blockId);
+      }
+      render();
+    }
+
+    function nextDossierItem(taskId) {
+      const task = GAME_BLOCKS[GameState.currentBlockIdx].tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      if (st.idx + 1 < task.items.length) {
+        st.idx++;
+        st.selectedIdx = null;
+        st.isCorrect = false;
+        GameState.questionStartTime = Date.now();
+        render();
+      } else {
+        completeCurrentTask();
+      }
+    }
+
+    /* ============================================================================
+       МЕХАНІКА 9 (Блок 5): ПУЛЬТ ВЕРХОВНОГО ЕКСПЕРТА (10 ВИПАДНИХ СПИСКІВ)
+       ============================================================================ */
+    function renderSupremeConsoleTask(workspace, block, task) {
+      if (!GameState.taskLocalState[task.id]) {
+        GameState.taskLocalState[task.id] = {
+          normIdx: 0,
+          selections: {},
+          checked: false,
+          results: {}
+        };
+      }
+      const st = GameState.taskLocalState[task.id];
+      const norm = task.norms[st.normIdx];
+      const allSelected = task.fields.every(f => st.selections[f.key]);
+      const allCorrect = st.checked && task.fields.every(f => st.results[f.key] === true);
+
+      workspace.innerHTML = `
+        <div class="mb-5">
+          <div class="inline-block px-3 py-1 rounded-lg bg-emerald-100 text-emerald-900 text-xs font-extrabold mb-2">МЕХАНІКА: ФІНАЛЬНИЙ ПУЛЬТ ЕКСПЕРТА (10 ПАРАМЕТРІВ)</div>
+          <h3 class="text-xl sm:text-2xl font-black text-indigo-950">${task.title}</h3>
+          <p class="text-sm text-slate-600 mt-1">${task.instruction}</p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-5">
+          ${task.norms.map((n, idx) => `
+            <div class="px-3.5 py-2 rounded-xl text-xs font-extrabold border-2 ${idx === st.normIdx ? 'bg-indigo-600 text-white border-indigo-800' : idx < st.normIdx ? 'bg-emerald-100 text-emerald-900 border-emerald-400' : 'bg-slate-100 text-slate-500 border-slate-200'}">
+              Норма ${n.num} ${idx < st.normIdx ? '✅' : ''}
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-indigo-950 to-slate-900 text-white mb-6 shadow-lg border-2 border-indigo-700">
+          <div class="text-xs font-extrabold uppercase tracking-wider text-amber-400 mb-2">${norm.heading}</div>
+          <p class="text-sm sm:text-base font-medium leading-relaxed whitespace-pre-line">${norm.text}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          ${task.fields.map(f => {
+            const val = st.selections[f.key] || '';
+            const res = st.results[f.key];
+            let borderCls = 'border-slate-300 bg-white';
+            if (st.checked) {
+              borderCls = res ? 'border-emerald-500 bg-emerald-50' : 'border-rose-500 bg-rose-50';
+            }
+            return `
+              <div class="p-3.5 rounded-2xl border-2 ${borderCls} transition-all">
+                <label class="block text-xs font-extrabold text-indigo-950 mb-1.5">
+                  ${f.label}:
+                  ${st.checked ? (res ? ' <span class="text-emerald-700">✓ Вірно</span>' : ' <span class="text-rose-700">✕ Змініть вибір</span>') : ''}
+                </label>
+                <select onchange="updateSupremeSelect('${task.id}', '${f.key}', this.value)"
+                  ${allCorrect ? 'disabled' : ''}
+                  class="w-full p-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-indigo-600">
+                  <option value="">— Оберіть варіант зі списку —</option>
+                  ${f.options.map(opt => `
+                    <option value="${opt}" ${val === opt ? 'selected' : ''}>${opt}</option>
+                  `).join('')}
+                </select>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        ${!allCorrect ? `
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <span class="text-xs text-slate-500 font-medium">Заповніть усі 10 критеріїв, щоб перевірити аналіз норми.</span>
+            <button onclick="checkSupremeNorm(${block.id}, '${task.id}')"
+              ${!allSelected ? 'disabled' : ''}
+              class="btn-3d btn-3d-indigo px-6 py-3.5 rounded-xl font-extrabold text-sm disabled:opacity-40">
+              Перевірити комплексний аналіз ⚖️
+            </button>
+          </div>
+        ` : `
+          <div class="p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-400 pop-in-3d flex flex-wrap items-center justify-between gap-4">
+            <div class="text-sm font-extrabold text-emerald-950">✅ Бездоганно! Усі 10 характеристик норми визначено правильно.</div>
+            <button onclick="nextSupremeNorm('${task.id}')" class="btn-3d btn-3d-gold px-6 py-3 rounded-xl font-extrabold text-sm">
+              ${st.normIdx + 1 < task.norms.length ? `Перейти до Норми ${st.normIdx + 2} ➡️` : 'Завершити Академію та отримати фінальні відзнаки 👑'}
+            </button>
+          </div>
+        `}
+      `;
+    }
+
+    function updateSupremeSelect(taskId, key, value) {
+      SoundFX.play('click');
+      const st = GameState.taskLocalState[taskId];
+      st.selections[key] = value;
+      if (st.checked) {
+        delete st.results[key];
+      }
+      render();
+    }
+
+    function checkSupremeNorm(blockId, taskId) {
+      const task = GAME_BLOCKS.find(b => b.id === blockId).tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      const norm = task.norms[st.normIdx];
+
+      st.checked = true;
+      let correctCount = 0;
+      task.fields.forEach(f => {
+        const isOk = st.selections[f.key] === norm.answers[f.key];
+        st.results[f.key] = isOk;
+        if (isOk) correctCount++;
+      });
+
+      if (correctCount === task.fields.length) {
+        recordAnswer(true, blockId);
+      } else {
+        recordAnswer(false, blockId);
+      }
+      render();
+    }
+
+    function nextSupremeNorm(taskId) {
+      const task = GAME_BLOCKS[GameState.currentBlockIdx].tasks.find(t => t.id === taskId);
+      const st = GameState.taskLocalState[taskId];
+      if (st.normIdx + 1 < task.norms.length) {
+        st.normIdx++;
+        st.selections = {};
+        st.checked = false;
+        st.results = {};
+        GameState.questionStartTime = Date.now();
+        render();
+      } else {
+        completeCurrentTask();
+      }
+    }
+
+    /* ============================================================================
+       ЕКРАН ЗАВЕРШЕННЯ БЛОКУ (ПРИСВОЄННЯ ЗВАННЯ)
+       ============================================================================ */
+    function renderBlockCompleteScreen(container) {
+      const block = GAME_BLOCKS[GameState.currentBlockIdx];
+      const rank = RANKS_DATA.find(r => r.id === block.rankId);
+      const nextBlock = GAME_BLOCKS[GameState.currentBlockIdx + 1];
+
+      container.innerHTML = `
+        <div class="card-3d rounded-3xl p-6 sm:p-10 text-center max-w-2xl mx-auto pop-in-3d">
+          <div class="w-24 h-24 mx-auto mb-5 rounded-3xl bg-gradient-to-br from-indigo-600 via-teal-500 to-amber-400 flex items-center justify-center text-5xl shadow-xl border-4 border-white">
+            ${rank.icon}
+          </div>
+          <div class="inline-block px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold uppercase tracking-wider mb-2">
+            ${block.title} ЗАВЕРШЕНО!
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-indigo-950 mb-2">
+            Вам присвоєно нове звання:
+          </h2>
+          <div class="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-teal-600 mb-3">
+            «${rank.title}»
+          </div>
+          <p class="text-sm text-slate-600 mb-6">${rank.desc}</p>
+
+          <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200 mb-7">
+            <div>
+              <div class="text-xs text-slate-500 font-bold">Успішність</div>
+              <div class="text-lg font-black text-indigo-950">${getSuccessRate()}%</div>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500 font-bold">Макс. серія</div>
+              <div class="text-lg font-black text-rose-600">🔥 ${GameState.maxStreak}</div>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500 font-bold">Відзнак</div>
+              <div class="text-lg font-black text-amber-600">🏆 ${GameState.unlockedRanks.length + GameState.unlockedBadges.length + GameState.unlockedCrests.length}</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <button onclick="startBlock(${GameState.currentBlockIdx + 1})" class="btn-3d btn-3d-indigo px-7 py-4 rounded-2xl font-extrabold text-sm sm:text-base">
+              Перейти до наступного блоку: ${nextBlock.title} ➡️
+            </button>
+            <button onclick="openTrophyModal()" class="btn-3d btn-3d-white px-5 py-4 rounded-2xl font-bold text-sm">
+              Переглянути відзнаки
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    /* ============================================================================
+       ФІНАЛЬНИЙ ЕКРАН ВИПУСКНИКА АКАДЕМІЇ
+       ============================================================================ */
+    function renderFinalVictoryScreen(container) {
+      const rate = getSuccessRate();
+      const isMaster = rate >= 75;
+
+      container.innerHTML = `
+        <div class="card-3d rounded-3xl p-6 sm:p-10 text-center max-w-3xl mx-auto pop-in-3d">
+          <div class="w-28 h-28 mx-auto mb-5 rounded-full bg-gradient-to-br from-amber-300 via-amber-500 to-orange-600 flex items-center justify-center text-6xl shadow-2xl border-4 border-white">
+            ${isMaster ? '👑' : '⚖️'}
+          </div>
+
+          <div class="inline-block px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-900 text-xs font-extrabold uppercase tracking-wider mb-3">
+            УСІ 5 БЛОКІВ АКАДЕМІЇ ПРОЙДЕНО!
+          </div>
+
+          ${isMaster ? `
+            <h2 class="text-2xl sm:text-4xl font-black text-indigo-950 mb-2">
+              Почесне звання «Майстер правознавства»!
+            </h2>
+            <p class="text-sm sm:text-base text-emerald-800 font-bold mb-6">
+              Вітаємо! Ваша успішність становить ${rate}% (потрібно не менше 75%). Ви блискуче опанували тему «Норма права. Структура норми права»!
+            </p>
+          ` : `
+            <h2 class="text-2xl sm:text-3xl font-black text-indigo-950 mb-2">
+              Звання «Експерт із теорії права» здобуто!
+            </h2>
+            <p class="text-sm text-slate-700 mb-6">
+              Ваша поточна успішність становить <strong>${rate}%</strong>. Щоб отримати найвище почесне звання <strong>«Майстер правознавства»</strong> (потрібно не менше 75%), ви можете покращити результат у будь-якому блоці!
+            </p>
+          `}
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-indigo-50/80 border-2 border-indigo-200 mb-6">
+            <div>
+              <div class="text-xs font-bold text-indigo-600">Успішність</div>
+              <div class="text-xl font-black text-indigo-950">${rate}%</div>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-indigo-600">Звання</div>
+              <div class="text-xl font-black text-indigo-950">${GameState.unlockedRanks.length} / ${RANKS_DATA.length}</div>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-teal-600">Значки</div>
+              <div class="text-xl font-black text-teal-900">${GameState.unlockedBadges.length} / ${BADGES_DATA.length}</div>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-amber-600">Печатки Феміди</div>
+              <div class="text-xl font-black text-amber-900">${GameState.unlockedCrests.length} / ${CRESTS_DATA.length}</div>
+            </div>
+          </div>
+
+          <!-- Зведення отриманих відзнак -->
+          <div class="text-left mb-7">
+            <h3 class="text-sm font-extrabold uppercase tracking-wider text-slate-500 mb-3">Ваші здобуті відзнаки:</h3>
+            <div class="flex flex-wrap gap-2">
+              ${GameState.unlockedRanks.map(id => {
+                const r = RANKS_DATA.find(x => x.id === id);
+                return `<span class="px-3 py-1.5 rounded-xl bg-indigo-100 text-indigo-950 text-xs font-extrabold border border-indigo-300">${r.icon} ${r.title}</span>`;
+              }).join('')}
+              ${GameState.unlockedBadges.map(id => {
+                const b = BADGES_DATA.find(x => x.id === id);
+                return `<span class="px-3 py-1.5 rounded-xl bg-teal-100 text-teal-950 text-xs font-extrabold border border-teal-300">${b.icon} ${b.title}</span>`;
+              }).join('')}
+              ${GameState.unlockedCrests.map(id => {
+                const c = CRESTS_DATA.find(x => x.id === id);
+                return `<span class="px-3 py-1.5 rounded-xl bg-amber-100 text-amber-950 text-xs font-extrabold border border-amber-300">${c.icon} ${c.title}</span>`;
+              }).join('')}
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <button onclick="openTrophyModal()" class="btn-3d btn-3d-gold px-6 py-3.5 rounded-2xl font-extrabold text-sm">
+              🏆 Відкрити Залу Слави
+            </button>
+            <button onclick="openMapModal()" class="btn-3d btn-3d-white px-6 py-3.5 rounded-2xl font-bold text-sm">
+              🗺️ Повернутися до блоків
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Ініціалізація при завантаженні сторінки
+    window.addEventListener('DOMContentLoaded', () => {
+      updateHUD();
+      render();
+    });
+  </script>
+</body>
+</html>
